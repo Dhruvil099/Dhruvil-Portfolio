@@ -8,6 +8,8 @@ import NotebookLink from "@/components/NotebookLink";
 import Figure from "@/components/Figure";
 import HarmChainExplorer from "@/components/figures/HarmChainExplorer";
 import CorrelatedFailure from "@/components/figures/CorrelatedFailure";
+import { NOTEBOOK_URL as KL_NOTEBOOK_URL } from "@/data/klExperiment";
+import { NOTEBOOK_URL as REASONING_NOTEBOOK_URL } from "@/data/reasoningEffort";
 import {
   trainingRunSnippet,
   summarySnippet,
@@ -43,7 +45,34 @@ function InteractiveCell({ name }: { name: string }) {
         </MarimoCell>
       );
     case "notebook-link":
-      return <NotebookLink />;
+      return (
+        <NotebookLink
+          url={REASONING_NOTEBOOK_URL}
+          description={
+            <>
+              The preregistration, runner, audit and every result table in this
+              article live in a public marimo notebook. The frozen hashes in the
+              reproducibility record identify the exact code and data audited
+              here.
+            </>
+          }
+        />
+      );
+    case "notebook-link-kl":
+      return (
+        <NotebookLink
+          url={KL_NOTEBOOK_URL}
+          description={
+            <>
+              The full corrected study runs in a public marimo notebook: the
+              environment, the vectorised trainer, the validation checks, the
+              exact dynamic-programming oracle and the frozen-policy
+              evaluation. The SHA-256 hashes below identify the exact code and
+              raw results audited for this article.
+            </>
+          }
+        />
+      );
     case "effort-ci-explorer":
       return (
         <MarimoCell

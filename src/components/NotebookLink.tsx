@@ -1,11 +1,17 @@
-import { NOTEBOOK_URL } from "@/data/reasoningEffort";
-
 /**
- * Prominent link to the study's public molab notebook. Unlike the KL study's
- * ephemeral sandbox, this notebook is durable, so the article links it
- * directly.
+ * Prominent link to a study's public molab notebook.
+ *
+ * Both studies now have durable public notebooks, so each article links its
+ * own directly; pass the URL and a one-line description of what the reader
+ * will find there.
  */
-export default function NotebookLink() {
+export default function NotebookLink({
+  url,
+  description,
+}: {
+  url: string;
+  description: React.ReactNode;
+}) {
   return (
     <div className="my-8 flex flex-col gap-4 rounded-xl border border-line bg-surface p-5 sm:flex-row sm:items-center">
       <div className="flex-1">
@@ -14,13 +20,11 @@ export default function NotebookLink() {
         </div>
         {/* div, not p — .prose-article p margins would distort the card */}
         <div className="mt-1.5 text-sm leading-relaxed text-ink-2">
-          The preregistration, runner, audit and every result table in this
-          article live in a public marimo notebook. The frozen hashes in the
-          reproducibility record identify the exact code and data audited here.
+          {description}
         </div>
       </div>
       <a
-        href={NOTEBOOK_URL}
+        href={url}
         target="_blank"
         rel="noreferrer"
         // !important utilities: .prose-article a would otherwise repaint this

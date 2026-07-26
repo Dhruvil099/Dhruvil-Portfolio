@@ -12,6 +12,8 @@ So I built the smallest experiment I could that lets me watch the whole failure 
 
 Everything below is measured from frozen policies on fresh evaluation episodes, with the code, logs, and raw arrays available to check.
 
+{{component:notebook-link-kl}}
+
 ## Sixty seconds on how RLHF actually works
 
 If you already know the pipeline, skip ahead. Reinforcement learning from human feedback (RLHF), the technique that turns a raw text-predictor into a chat assistant, has three steps:
@@ -141,7 +143,7 @@ If you think the experiment is still flawed, I'd honestly like to know. The firs
 
 ### Run it yourself
 
-The corrected study lives in a marimo notebook (in `experiment/gpu_run/` in the repo: `notebook.py`, the timestamped `run.log`, per-β statistics, and five figures; the full `results.npz` includes final policy parameters, oracle policies, and raw frozen-evaluation arrays). The full sweep of 6,144 trained policies, across both policy classes and both entropy settings, took about three minutes of GPU time on an RTX PRO 6000 Blackwell. The original laptop-scale script (`experiment/reward_hacking_gridworld.py`, numpy only, minutes on CPU) is kept for history: it implements only the stationary policy class, and reproduces act one. That is precisely its limitation.
+The corrected study runs in a [public marimo notebook](https://molab.marimo.io/notebooks/nb_2JsqgyC2yJ6fv498EXpwGC), archived in `experiment/gpu_run/` in the repo ( `notebook.py`, the timestamped `run.log`, per-β statistics, and five figures; the full `results.npz` includes final policy parameters, oracle policies, and raw frozen-evaluation arrays). The full sweep of 6,144 trained policies, across both policy classes and both entropy settings, took about three minutes of GPU time on an RTX PRO 6000 Blackwell. The original laptop-scale script (`experiment/reward_hacking_gridworld.py`, numpy only, minutes on CPU) is kept for history: it implements only the stationary policy class, and reproduces act one. That is precisely its limitation.
 
 ### References
 

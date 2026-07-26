@@ -2,7 +2,11 @@
 // Generated from experiment/gpu_run/summary.json (results.npz sha256 eb7d25b4…).
 // Every value is a mean over 64 replicas x 256 fresh evaluation episodes.
 
-export const klData = {
+/** Public marimo notebook for this study (durable). */
+export const NOTEBOOK_URL =
+  "https://molab.marimo.io/notebooks/nb_2JsqgyC2yJ6fv498EXpwGC";
+
+export const klData ={
   "betas": [
     0.0,
     0.005,
