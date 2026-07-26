@@ -6,8 +6,8 @@
 //      /public; optional interactive cells via a `{{component:<name>}}` line —
 //      see src/components/ArticleBody.tsx for the component registry)
 //   2. add an entry here with status: "published"
-// The two "in-progress" entries below are the currently-running experiments —
-// flip them to "published" (and fill file/cover) when their write-ups land.
+// The "in-progress" entry below is the currently-running experiment —
+// flip it to "published" (and fill file/cover) when its write-up lands.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type Article = {
@@ -39,12 +39,19 @@ export const articles: Article[] = [
     file: "the-kl-penalty-is-a-leash.md",
   },
   {
-    slug: "experiment-02",
-    title: "Experiment 02",
-    dek: "Currently running. Write-up coming soon.",
-    date: "2026-08-01",
-    tags: ["in progress"],
-    status: "in-progress",
+    slug: "reasoning-effort-prompt-injection",
+    title:
+      "No resolved safety effect of reasoning effort under indirect prompt injection",
+    dek:
+      "A pinned gpt-oss-20b agent, four AgentDojo domains, and one changed system line: at low, medium and high reasoning effort, no completed comparison resolved a safety effect, the attack search chose the same template every time, and the confirmatory transfer run was lost to a persistence flaw in my own runner. Reasoning effort is not yet a security control.",
+    date: "2026-07-27",
+    readingTime: "12 min read",
+    cover: "/art/reasoning-effort-cover.svg",
+    coverAlt:
+      "Diagram of a tool-using agent whose tool output carries a hidden injected instruction, beside three reasoning-effort dials and three 95% confidence intervals that all cross zero",
+    tags: ["prompt injection", "AgentDojo", "gpt-oss-20b", "reasoning effort", "null result"],
+    status: "published",
+    file: "reasoning-effort-prompt-injection.md",
   },
   {
     slug: "experiment-03",

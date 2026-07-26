@@ -94,7 +94,7 @@ export default async function ArticlePage({
         <a className="text-blue underline" href="mailto:contact.rezinix@gmail.com">
           email me
         </a>
-        . Two follow-up experiments are running now; write-ups will appear on
+        . A follow-up experiment is running now; its write-up will appear on
         the <Link href="/blogs" className="text-blue underline">blogs page</Link>.
       </div>
     </article>

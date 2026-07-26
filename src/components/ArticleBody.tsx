@@ -2,7 +2,15 @@ import { renderArticleChunks } from "@/lib/markdown";
 import MarimoCell from "@/components/marimo/MarimoCell";
 import RunLogViewer from "@/components/marimo/RunLogViewer";
 import KLDialExplorer from "@/components/marimo/KLDialExplorer";
-import { trainingRunSnippet, summarySnippet } from "@/data/marimoSnippets";
+import EffortCIExplorer from "@/components/marimo/EffortCIExplorer";
+import TransferMatrix from "@/components/marimo/TransferMatrix";
+import NotebookLink from "@/components/NotebookLink";
+import {
+  trainingRunSnippet,
+  summarySnippet,
+  effortContrastSnippet,
+  effortConditionSnippet,
+} from "@/data/marimoSnippets";
 
 /**
  * Interactive-cell registry. An article opts in with a `{{component:<name>}}`
@@ -29,6 +37,28 @@ function InteractiveCell({ name }: { name: string }) {
           outputNote="interactive — real frozen-evaluation data, no code execution"
         >
           <KLDialExplorer />
+        </MarimoCell>
+      );
+    case "notebook-link":
+      return <NotebookLink />;
+    case "effort-ci-explorer":
+      return (
+        <MarimoCell
+          cellName="clustered_contrast"
+          code={effortContrastSnippet}
+          outputNote="interactive — raw counts and task-clustered 95% CIs, no code execution"
+        >
+          <EffortCIExplorer />
+        </MarimoCell>
+      );
+    case "transfer-matrix":
+      return (
+        <MarimoCell
+          cellName="evaluation_engine"
+          code={effortConditionSnippet}
+          outputNote="exploratory pilot — every source effort selected the same template"
+        >
+          <TransferMatrix />
         </MarimoCell>
       );
     default:

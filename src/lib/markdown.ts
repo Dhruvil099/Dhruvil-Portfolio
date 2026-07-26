@@ -12,12 +12,14 @@ export type ArticleChunk =
 const MARKER = /^\{\{component:([a-z0-9-]+)\}\}\s*$/;
 
 async function toHtml(md: string): Promise<string> {
+  // allowDangerousHtml: article markdown is authored in this repo only (no
+  // user-generated content); it lets tables use `<br>` inside cells.
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeShiki, { theme: "github-dark-default" })
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(md);
   return String(file);
 }

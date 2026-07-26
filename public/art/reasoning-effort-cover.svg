@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A tool-using agent receives a tool output carrying an injected instruction; three reasoning-effort dials sit beside three confidence intervals that all cross zero">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3987e5" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#3987e5" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3a444a"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#0d1215"/>
+  <circle cx="780" cy="400" r="390" fill="url(#glow)"/>
+
+  <!-- ── user task chip ── -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <rect x="110" y="120" width="260" height="64" rx="12" fill="#14191c" stroke="#232b2f" stroke-width="2"/>
+    <circle cx="142" cy="152" r="6" fill="#3987e5"/>
+    <text x="162" y="160" font-size="22" fill="#a9b4ad">user task</text>
+  </g>
+
+  <!-- ── tool output card with injected instruction ── -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <rect x="110" y="430" width="420" height="300" rx="16" fill="#14191c" stroke="#232b2f" stroke-width="2"/>
+    <text x="134" y="466" font-size="20" fill="#75817a">tool output</text>
+    <rect x="416" y="446" width="90" height="26" rx="13" fill="none" stroke="#232b2f" stroke-width="1.5"/>
+    <text x="461" y="464" font-size="13" fill="#75817a" text-anchor="middle">untrusted</text>
+    <line x1="111" y1="482" x2="529" y2="482" stroke="#232b2f" stroke-width="2"/>
+    <rect x="134" y="510" width="340" height="12" rx="6" fill="#2a333a"/>
+    <rect x="134" y="542" width="300" height="12" rx="6" fill="#2a333a"/>
+    <rect x="134" y="574" width="356" height="12" rx="6" fill="#2a333a"/>
+    <rect x="126" y="598" width="356" height="36" rx="8" fill="#d95926" fill-opacity="0.09" stroke="#d95926" stroke-opacity="0.55" stroke-width="1.5"/>
+    <rect x="142" y="610" width="300" height="12" rx="6" fill="#d95926"/>
+    <text x="142" y="668" font-size="18" fill="#d95926">← injected instruction</text>
+    <rect x="134" y="686" width="240" height="12" rx="6" fill="#2a333a"/>
+  </g>
+
+  <!-- ── agent ── -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <rect x="620" y="250" width="320" height="110" rx="16" fill="#14191c" stroke="#232b2f" stroke-width="2"/>
+    <text x="780" y="298" font-size="26" fill="#e8ede9" text-anchor="middle">gpt-oss-20b agent</text>
+    <text x="780" y="334" font-size="19" text-anchor="middle" fill="#75817a">Reasoning: <tspan fill="#3987e5">low · medium · high</tspan></text>
+    <!-- four AgentDojo domains -->
+    <g font-size="16" fill="#75817a">
+      <rect x="539" y="396" width="110" height="40" rx="10" fill="none" stroke="#232b2f" stroke-width="1.5"/>
+      <text x="594" y="421" text-anchor="middle">banking</text>
+      <rect x="663" y="396" width="110" height="40" rx="10" fill="none" stroke="#232b2f" stroke-width="1.5"/>
+      <text x="718" y="421" text-anchor="middle">slack</text>
+      <rect x="787" y="396" width="110" height="40" rx="10" fill="none" stroke="#232b2f" stroke-width="1.5"/>
+      <text x="842" y="421" text-anchor="middle">travel</text>
+      <rect x="911" y="396" width="110" height="40" rx="10" fill="none" stroke="#232b2f" stroke-width="1.5"/>
+      <text x="966" y="421" text-anchor="middle">workspace</text>
+    </g>
+  </g>
+
+  <!-- ── flows ── -->
+  <path d="M 370 152 C 490 152, 540 230, 612 276" fill="none" stroke="#3a444a" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 320 430 C 360 380, 470 330, 600 318" fill="none" stroke="#3a444a" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- the injected instruction rides the tool output -->
+  <path d="M 482 616 C 560 580, 510 410, 596 348" fill="none" stroke="#d95926" stroke-width="2.5" stroke-dasharray="6 9" opacity="0.75"/>
+
+  <!-- ── effort dials ── -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <text x="1060" y="105" font-size="16" fill="#75817a">configured reasoning effort</text>
+    <!-- low -->
+    <path d="M 1090.2 213 A 46 46 0 1 1 1169.8 213" fill="none" stroke="#232b2f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 1090.2 213 A 46 46 0 0 1 1090.2 167" fill="none" stroke="#1c5cab" stroke-width="8" stroke-linecap="round"/>
+    <text x="1130" y="268" font-size="18" fill="#a9b4ad" text-anchor="middle">low</text>
+    <!-- medium -->
+    <path d="M 1250.2 213 A 46 46 0 1 1 1329.8 213" fill="none" stroke="#232b2f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 1250.2 213 A 46 46 0 0 1 1299.6 145" fill="none" stroke="#3987e5" stroke-width="8" stroke-linecap="round"/>
+    <text x="1290" y="268" font-size="18" fill="#a9b4ad" text-anchor="middle">medium</text>
+    <!-- high -->
+    <path d="M 1410.2 213 A 46 46 0 1 1 1489.8 213" fill="none" stroke="#232b2f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 1410.2 213 A 46 46 0 1 1 1495.8 185.2" fill="none" stroke="#86b6ef" stroke-width="8" stroke-linecap="round"/>
+    <text x="1450" y="268" font-size="18" fill="#a9b4ad" text-anchor="middle">high</text>
+  </g>
+
+  <!-- ── the null result: high − low CIs all crossing zero ── -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <text x="1060" y="392" font-size="19" fill="#a9b4ad">high − low · every 95% CI crosses zero</text>
+    <line x1="1236" y1="424" x2="1236" y2="778" stroke="#75817a" stroke-width="2"/>
+    <text x="1236" y="810" font-size="18" fill="#75817a" text-anchor="middle">0 pp</text>
+
+    <text x="1060" y="446" font-size="16" fill="#75817a" stroke="#0d1215" stroke-width="6" paint-order="stroke">clean completion</text>
+    <line x1="1168" y1="470" x2="1480" y2="470" stroke="#3987e5" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="1314" cy="470" r="11" fill="#86b6ef" stroke="#0d1215" stroke-width="4"/>
+
+    <text x="1060" y="546" font-size="16" fill="#75817a" stroke="#0d1215" stroke-width="6" paint-order="stroke">fixed-attack ASR</text>
+    <line x1="1181" y1="570" x2="1390" y2="570" stroke="#3987e5" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="1284" cy="570" r="11" fill="#86b6ef" stroke="#0d1215" stroke-width="4"/>
+
+    <text x="1060" y="646" font-size="16" fill="#75817a" stroke="#0d1215" stroke-width="6" paint-order="stroke">selected-template ASR</text>
+    <line x1="1114" y1="670" x2="1395" y2="670" stroke="#3987e5" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="1248" cy="670" r="11" fill="#86b6ef" stroke="#0d1215" stroke-width="4"/>
+  </g>
+</svg>
