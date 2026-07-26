@@ -12,17 +12,20 @@ export default function NotebookLink() {
         <div className="font-mono text-[10px] uppercase tracking-wider text-ink-3">
           live notebook
         </div>
-        <p className="mt-1.5 text-sm leading-relaxed text-ink-2">
+        {/* div, not p — .prose-article p margins would distort the card */}
+        <div className="mt-1.5 text-sm leading-relaxed text-ink-2">
           The preregistration, runner, audit and every result table in this
           article live in a public marimo notebook. The frozen hashes in the
           reproducibility record identify the exact code and data audited here.
-        </p>
+        </div>
       </div>
       <a
         href={NOTEBOOK_URL}
         target="_blank"
         rel="noreferrer"
-        className="shrink-0 rounded-lg bg-blue px-4 py-2 text-center text-sm font-medium text-white transition-opacity hover:opacity-90"
+        // !important utilities: .prose-article a would otherwise repaint this
+        // button's label blue and underline it
+        className="shrink-0 rounded-lg bg-blue px-4 py-2 text-center text-sm font-medium !text-white !no-underline transition-opacity hover:opacity-90"
       >
         Open the live marimo notebook →
       </a>
