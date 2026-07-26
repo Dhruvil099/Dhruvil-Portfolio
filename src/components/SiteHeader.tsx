@@ -9,8 +9,8 @@ export default function SiteHeader() {
           {profile.name}
         </Link>
         <nav className="ml-auto flex items-center gap-5 text-sm text-ink-2">
-          <Link href="/research" className="hover:text-ink">
-            Research
+          <Link href="/blogs" className="hover:text-ink">
+            Blogs
           </Link>
           <Link href="/#about" className="hover:text-ink">
             About

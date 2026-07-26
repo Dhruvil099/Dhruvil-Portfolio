@@ -3,7 +3,7 @@ import ArticleCard from "@/components/ArticleCard";
 import { articles } from "@/data/articles";
 
 export const metadata: Metadata = {
-  title: "Research",
+  title: "Blogs",
   description:
     "Small, auditable AI-safety experiments — reward hacking, RLHF, evaluations — with figures, logs and corrections published.",
 };
@@ -12,7 +12,7 @@ export default function ResearchIndex() {
   return (
     <div className="mx-auto max-w-5xl px-5 py-16">
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-blue">
-        Research
+        Blog
       </p>
       <h1 className="mt-3 text-3xl font-bold tracking-tight text-ink">
         Experiments &amp; write-ups

@@ -34,7 +34,7 @@ export default function ArticleCard({
 
   return (
     <Link
-      href={`/research/${article.slug}`}
+      href={`/blogs/${article.slug}`}
       className={`group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors hover:border-ink-3/60 ${
         featured ? "md:col-span-2" : ""
       }`}

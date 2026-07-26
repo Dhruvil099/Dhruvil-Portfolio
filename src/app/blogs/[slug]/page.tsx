@@ -50,10 +50,10 @@ export default async function ArticlePage({
   return (
     <article className="mx-auto max-w-3xl px-5 py-14">
       <Link
-        href="/research"
+        href="/blogs"
         className="font-mono text-xs text-ink-3 hover:text-ink-2"
       >
-        ← Research
+        ← Blogs
       </Link>
       <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
         {article.title}
@@ -95,7 +95,7 @@ export default async function ArticlePage({
           email me
         </a>
         . Two follow-up experiments are running now; write-ups will appear on
-        the <Link href="/research" className="text-blue underline">research page</Link>.
+        the <Link href="/blogs" className="text-blue underline">blogs page</Link>.
       </div>
     </article>
   );

@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
@@ -87,13 +88,13 @@ export default function ResumePage() {
             <p className="text-sm leading-relaxed text-ink-2">
               A downloadable PDF will appear here very soon. In the meantime,
               the{" "}
-              <a href="/#experience" className="text-blue underline">
+              <Link href="/#experience" className="text-blue underline">
                 experience
-              </a>{" "}
+              </Link>{" "}
               and{" "}
-              <a href="/#projects" className="text-blue underline">
+              <Link href="/#projects" className="text-blue underline">
                 projects
-              </a>{" "}
+              </Link>{" "}
               sections cover the essentials, and I am one email away.
             </p>
             <div className="mt-2 flex flex-wrap justify-center gap-3">

@@ -33,7 +33,7 @@ export default function Home() {
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
-              href="/research"
+              href="/blogs"
               className="rounded-lg bg-blue px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               Read the research
@@ -75,8 +75,8 @@ export default function Home() {
       <section className="border-t border-line/70 py-16">
         <div className="flex items-baseline justify-between">
           <SectionHeading id="research">Research &amp; experiments</SectionHeading>
-          <Link href="/research" className="text-sm text-blue hover:underline">
-            All research →
+          <Link href="/blogs" className="text-sm text-blue hover:underline">
+            All posts →
           </Link>
         </div>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
