@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArticleBody from "@/components/ArticleBody";
 import { articles, publishedArticles } from "@/data/articles";
+import { profile } from "@/data/profile";
 
 export const dynamicParams = false;
 
@@ -93,7 +94,7 @@ export default async function ArticlePage({
 
       <div className="mt-14 rounded-xl border border-line bg-surface p-5 text-sm text-ink-2">
         Questions, corrections, or a way to break this? I want to hear it:{" "}
-        <a className="text-blue underline" href="mailto:contact.rezinix@gmail.com">
+        <a className="text-blue underline" href={`mailto:${profile.email}`}>
           email me
         </a>
         .{" "}

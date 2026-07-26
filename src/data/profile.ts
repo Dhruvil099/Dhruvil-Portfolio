@@ -35,7 +35,7 @@ export const profile = {
     "Vizuara RL production course — all 4 phases",
   ],
 
-  email: "contact.rezinix@gmail.com",
+  email: "shahdhruvil1310@gmail.com",
   github: "https://github.com/Dhruvil099",
   // ✏️ EDIT ME — add when ready (leave "" to hide the link):
   linkedin: "",
