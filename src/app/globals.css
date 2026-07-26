@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #0d1215;
+  --color-surface: #14191c;
+  --color-surface-2: #1a1a19;
+  --color-line: #232b2f;
+  --color-ink: #e8ede9;
+  --color-ink-2: #a9b4ad;
+  --color-ink-3: #75817a;
+  --color-blue: #3987e5;
+  --color-orange: #d95926;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-blue) 40%, transparent);
+}
+
+/* ---------- article prose ---------- */
+
+.prose-article {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-ink-2);
+}
+.prose-article h2 {
+  color: var(--color-ink);
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 2.75rem 0 1rem;
+  scroll-margin-top: 5rem;
+}
+.prose-article h3 {
+  color: var(--color-ink);
+  font-size: 1.17rem;
+  font-weight: 600;
+  margin: 2.25rem 0 0.75rem;
+}
+.prose-article p {
+  margin: 1rem 0;
+}
+.prose-article strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.prose-article a {
+  color: var(--color-blue);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-blue) 40%, transparent);
+  text-underline-offset: 3px;
+}
+.prose-article a:hover {
+  text-decoration-color: var(--color-blue);
+}
+.prose-article ul,
+.prose-article ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.prose-article ul {
+  list-style: disc;
+}
+.prose-article ol {
+  list-style: decimal;
+}
+.prose-article li {
+  margin: 0.45rem 0;
+  padding-left: 0.25rem;
+}
+.prose-article li::marker {
+  color: var(--color-ink-3);
+}
+.prose-article blockquote {
+  border-left: 3px solid var(--color-blue);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--color-ink);
+  font-style: italic;
+}
+.prose-article hr {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: 2.5rem 0;
+}
+.prose-article img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface-2);
+  margin: 1.75rem 0 0.5rem;
+}
+/* caption = a paragraph containing only an <em>, right after an image */
+.prose-article p:has(> em:only-child) {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-ink-3);
+  margin: 0.35rem auto 1.75rem;
+  max-width: 44rem;
+}
+.prose-article code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875em;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-line);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.35rem;
+  color: var(--color-ink);
+}
+.prose-article pre {
+  background: var(--color-surface-2) !important;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.prose-article pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+.prose-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.5rem 0;
+}
+.prose-article th {
+  color: var(--color-ink);
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.5rem 0.75rem;
+}
+.prose-article td {
+  border-bottom: 1px solid color-mix(in oklab, var(--color-line) 60%, transparent);
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+}
+
+/* ---------- shiki code inside marimo cells ---------- */
+
+.marimo-code pre {
+  background: transparent !important;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ---------- range slider ---------- */
+
+input[type="range"] {
+  accent-color: var(--color-blue);
+}
