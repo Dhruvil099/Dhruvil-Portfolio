@@ -6,8 +6,9 @@
 //      /public; optional interactive cells via a `{{component:<name>}}` line —
 //      see src/components/ArticleBody.tsx for the component registry)
 //   2. add an entry here with status: "published"
-// The "in-progress" entry below is the currently-running experiment —
-// flip it to "published" (and fill file/cover) when its write-up lands.
+// Array order controls display order (newest / flagship first). To tease work
+// in flight, add an entry with status: "in-progress" and no file — it renders
+// as a "running now" card until its write-up lands.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type Article = {
@@ -24,6 +25,26 @@ export type Article = {
 };
 
 export const articles: Article[] = [
+  {
+    slug: "from-benchmarks-to-barriers",
+    title: "From benchmarks to barriers",
+    dek:
+      "A safety number is not a permission slip. Using my own two studies — one whose headline I had to retract, one that stopped mid-run — I argue that evidence about a model should authorise only the capabilities its evaluated control portfolio can actually support, and set out what a decision-relevant evaluation has to contain.",
+    date: "2026-07-27",
+    readingTime: "24 min read",
+    cover: "/art/benchmarks-to-barriers-cover.svg",
+    coverAlt:
+      "Diagram of a seven-link harm pathway in which the first links are lit by evidence and the last links stay dark, with an authority gate standing between a capability score and an irreversible action",
+    tags: [
+      "AGI strategy",
+      "deployment authority",
+      "safety cases",
+      "adaptive evaluation",
+      "defence in depth",
+    ],
+    status: "published",
+    file: "from-benchmarks-to-barriers.md",
+  },
   {
     slug: "the-kl-penalty-is-a-leash",
     title: "The KL penalty is a leash, not a conscience",
@@ -52,14 +73,6 @@ export const articles: Article[] = [
     tags: ["prompt injection", "AgentDojo", "gpt-oss-20b", "reasoning effort", "null result"],
     status: "published",
     file: "reasoning-effort-prompt-injection.md",
-  },
-  {
-    slug: "experiment-03",
-    title: "Experiment 03",
-    dek: "Currently running. Write-up coming soon.",
-    date: "2026-08-01",
-    tags: ["in progress"],
-    status: "in-progress",
   },
 ];
 

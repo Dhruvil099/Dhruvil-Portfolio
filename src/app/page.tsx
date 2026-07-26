@@ -80,8 +80,9 @@ export default function Home() {
           </Link>
         </div>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {articles.map((a) => (
-            <ArticleCard key={a.slug} article={a} featured={a.status === "published"} />
+          {articles.map((a, i) => (
+            // Only the lead article runs full width; the rest sit in the grid.
+            <ArticleCard key={a.slug} article={a} featured={i === 0} />
           ))}
         </div>
       </section>

@@ -1,7 +1,10 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
 import rehypeShiki from "@shikijs/rehype";
 
@@ -14,10 +17,17 @@ const MARKER = /^\{\{component:([a-z0-9-]+)\}\}\s*$/;
 async function toHtml(md: string): Promise<string> {
   // allowDangerousHtml: article markdown is authored in this repo only (no
   // user-generated content); it lets tables use `<br>` inside cells.
+  // remarkMath + rehypeKatex render `$…$` and `$$…$$` (see the transform in
+  // scripts/: source articles may author math as \(…\) / \[…\]).
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeSlug)
+    // Defaults: renders HTML + MathML (screen-reader friendly) and marks a bad
+    // expression inline instead of throwing, so one typo can't fail the build.
+    .use(rehypeKatex)
     .use(rehypeShiki, { theme: "github-dark-default" })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(md);
@@ -26,7 +36,7 @@ async function toHtml(md: string): Promise<string> {
 
 /**
  * Split an article's markdown on `{{component:<name>}}` marker lines and
- * render the markdown segments to HTML (GFM + shiki highlighting).
+ * render the markdown segments to HTML (GFM + math + shiki highlighting).
  */
 export async function renderArticleChunks(md: string): Promise<ArticleChunk[]> {
   const segments: Array<{ kind: "md"; text: string } | { kind: "comp"; name: string }> = [];

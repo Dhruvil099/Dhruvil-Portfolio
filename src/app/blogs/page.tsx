@@ -23,8 +23,8 @@ export default function ResearchIndex() {
         their corrections visible — the audit trail is part of the work.
       </p>
       <div className="mt-10 grid gap-5 md:grid-cols-2">
-        {articles.map((a) => (
-          <ArticleCard key={a.slug} article={a} featured={a.status === "published"} />
+        {articles.map((a, i) => (
+          <ArticleCard key={a.slug} article={a} featured={i === 0} />
         ))}
       </div>
     </div>

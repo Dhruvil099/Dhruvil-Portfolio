@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArticleBody from "@/components/ArticleBody";
-import { publishedArticles } from "@/data/articles";
+import { articles, publishedArticles } from "@/data/articles";
 
 export const dynamicParams = false;
 
@@ -89,13 +89,18 @@ export default async function ArticlePage({
       </div>
 
       <div className="mt-14 rounded-xl border border-line bg-surface p-5 text-sm text-ink-2">
-        Questions, corrections, or a way to break this experiment? I want to
-        hear it —{" "}
+        Questions, corrections, or a way to break this? I want to hear it:{" "}
         <a className="text-blue underline" href="mailto:contact.rezinix@gmail.com">
           email me
         </a>
-        . A follow-up experiment is running now; its write-up will appear on
-        the <Link href="/blogs" className="text-blue underline">blogs page</Link>.
+        .{" "}
+        {articles.some((a) => a.status === "in-progress")
+          ? "Further work is running now; write-ups appear on the "
+          : "The rest of the write-ups are on the "}
+        <Link href="/blogs" className="text-blue underline">
+          blogs page
+        </Link>
+        .
       </div>
     </article>
   );

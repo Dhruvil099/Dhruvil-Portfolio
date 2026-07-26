@@ -159,6 +159,20 @@ body {
   vertical-align: top;
 }
 
+/* ---------- math (KaTeX) ---------- */
+
+.prose-article .katex {
+  color: var(--color-ink);
+}
+/* Display equations can be wider than the column (the article has a long
+   arrow chain): scroll inside their own box, never push the page sideways. */
+.prose-article .katex-display {
+  margin: 1.75rem 0;
+  padding: 0.35rem 0.1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 /* ---------- shiki code inside marimo cells ---------- */
 
 .marimo-code pre {
