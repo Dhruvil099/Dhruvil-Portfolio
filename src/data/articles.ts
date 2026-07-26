@@ -15,10 +15,12 @@ export type Article = {
   slug: string;
   title: string;
   dek: string;
+  // Kept as metadata but not displayed anywhere: array order drives ordering.
   date: string; // ISO
   readingTime?: string;
   cover?: string;
   coverAlt?: string;
+  socialImage?: string; // optional square/OG variant; falls back to cover
   tags: string[];
   status: "published" | "in-progress";
   file?: string; // filename inside content/articles/
@@ -32,9 +34,10 @@ export const articles: Article[] = [
       "A safety number is not a permission slip. Using my own two studies — one whose headline I had to retract, one that stopped mid-run — I argue that evidence about a model should authorise only the capabilities its evaluated control portfolio can actually support, and set out what a decision-relevant evaluation has to contain.",
     date: "2026-07-27",
     readingTime: "24 min read",
-    cover: "/art/benchmarks-to-barriers-cover.svg",
+    cover: "/art/b2b-cover.jpg",
     coverAlt:
-      "Diagram of a seven-link harm pathway in which the first links are lit by evidence and the last links stay dark, with an authority gate standing between a capability score and an irreversible action",
+      "A small robot stands on the last of four brightly lit stepping stones, facing a closed glowing gate; beyond the gate the remaining stones are dark and barely visible",
+    socialImage: "/art/b2b-social.jpg",
     tags: [
       "AGI strategy",
       "deployment authority",

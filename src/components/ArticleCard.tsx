@@ -52,18 +52,8 @@ export default function ArticleCard({
         </div>
       ) : null}
       <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-ink-3">
-          <time dateTime={article.date}>
-            {new Date(article.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
-          </time>
-          {article.readingTime ? <span>· {article.readingTime}</span> : null}
-        </div>
         <h3
-          className={`mt-2 font-semibold tracking-tight text-ink group-hover:underline ${
+          className={`font-semibold tracking-tight text-ink group-hover:underline ${
             featured ? "text-2xl" : "text-lg"
           }`}
         >

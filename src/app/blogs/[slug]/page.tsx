@@ -28,7 +28,11 @@ export async function generateMetadata({
       title: article.title,
       description: article.dek,
       type: "article",
-      images: article.cover ? [article.cover] : undefined,
+      images: article.socialImage
+        ? [article.socialImage]
+        : article.cover
+          ? [article.cover]
+          : undefined,
     },
   };
 }
@@ -59,16 +63,15 @@ export default async function ArticlePage({
         {article.title}
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-ink-2">{article.dek}</p>
-      <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-ink-3">
-        <time dateTime={article.date}>
-          {new Date(article.date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-        {article.readingTime ? <span>· {article.readingTime}</span> : null}
-        <span>· marimo notebook + archived run</span>
+      <div className="mt-5 flex flex-wrap gap-1.5">
+        {article.tags.map((t) => (
+          <span
+            key={t}
+            className="rounded-full border border-line px-2.5 py-0.5 text-[11px] text-ink-3"
+          >
+            {t}
+          </span>
+        ))}
       </div>
 
       {article.cover ? (

@@ -61,6 +61,10 @@ instruction; it adopts the unauthorised objective; it has the needed tools;
 the permission layer accepts the request; monitoring misses it; and recovery
 fails after execution.
 
+![A robot at a desk reads a floating invoice in which one line glows red; a thin red thread runs from that line to a closed steel vault door, where it stops, while a stack of gold coins sits untouched in front of the door](/art/b2b-decision.jpg)
+
+*The hidden instruction reaches the model. A deterministic transaction boundary is what keeps the money still.*
+
 A better prompt may reduce the second and third failures. It says little about
 permissions, independent approval or rollback. A deterministic transaction
 boundary may block the payment even when the model has been compromised.
@@ -315,6 +319,10 @@ model capability from automatically becoming operational authority.
 future has a simpler organising rule: **capability does not confer
 authority**.
 
+![A large capable robot holds up a tiny key to an enormous locked door, while a much smaller door beside it stands genuinely open, spilling teal light](/art/b2b-authority.jpg)
+
+*Being capable does not hand you the big door. Scoped permission is the small door that is actually open.*
+
 In that future, safety claims name their model, scaffold, task distribution,
 threat actor, attacker budget and expiry conditions. Permission is granted
 for a particular use, not inherited from a general benchmark score. An agent
@@ -411,6 +419,10 @@ during training, provenance checks during deliberation, least-privilege tool
 access, independent authorisation, monitoring, rate limits and recovery. A
 stack of individually promising controls is not yet
 [defence in depth](https://bluedot.org/courses/agi-strategy/4/2).
+
+![Two security cameras mounted side by side both point the same way, their light cones overlapping on the same patch of floor, while a small red shape slips through the unwatched darkness beside them](/art/b2b-correlation.jpg)
+
+*Two layers only multiply if they fail independently. Cameras pointed the same way is what correlation looks like.*
 
 Suppose the acting model and monitor each fail on 10% of scenarios. A 1%
 joint failure rate follows only if their failures are independent:
