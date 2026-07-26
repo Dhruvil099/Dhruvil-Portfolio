@@ -15,6 +15,9 @@ export default function SiteHeader() {
           <Link href="/#about" className="hover:text-ink">
             About
           </Link>
+          <Link href="/resume" className="hover:text-ink">
+            Resume
+          </Link>
           <Link href="/#contact" className="hover:text-ink">
             Contact
           </Link>

@@ -17,6 +17,7 @@ design. Deploy target: Vercel.
 | Interactive notebook cells | add a `{{component:<name>}}` line in the md; register the component in `src/components/ArticleBody.tsx` |
 | Experiment data behind the KL explorer | `src/data/klExperiment.ts` (generated from the archived run's `summary.json`) |
 | Archived run log | `src/data/runLog.ts` |
+| Resume | drop `public/resume.pdf` — the `/resume` page auto-detects it at build time (shows a "coming soon" state until then) |
 
 To publish a new experiment: drop `content/articles/<slug>.md`, put its images
 under `public/articles/<slug>/`, and flip (or add) its entry in
