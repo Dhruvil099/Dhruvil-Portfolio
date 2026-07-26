@@ -27,7 +27,8 @@ export const articles: Article[] = [
   {
     slug: "the-kl-penalty-is-a-leash",
     title: "The KL penalty is a leash, not a conscience",
-    dek: "I built a toy RLHF loop with a deliberately gameable reward, believed a tidy conclusion, then audited my own experiment — and the audit broke the conclusion. What survived is a better safety lesson: task completion can conceal reward exploitation, and how capable your policy is changes what failure looks like.",
+    dek:
+      "I built a toy RLHF loop with a deliberately gameable reward, believed a tidy conclusion, then audited my own experiment. The audit broke the conclusion. What survived is a better safety lesson: task completion can conceal reward exploitation, and how capable your policy is changes what failure looks like.",
     date: "2026-07-26",
     readingTime: "16 min read",
     cover: "/art/cover.jpg",
