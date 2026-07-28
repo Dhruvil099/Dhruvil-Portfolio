@@ -45,7 +45,7 @@ export default function DriveVideo({
             <img
               src={poster}
               alt=""
-              className="absolute inset-0 h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-85"
+              className="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
             />
             <span className="absolute inset-0 flex flex-col items-center justify-center gap-3">
               <span className="flex size-16 items-center justify-center rounded-full bg-blue/90 shadow-lg transition-transform group-hover:scale-105">

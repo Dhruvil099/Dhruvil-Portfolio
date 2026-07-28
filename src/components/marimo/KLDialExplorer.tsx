@@ -12,12 +12,12 @@ const MT = 14;
 const MB = 40;
 const PLOT_W = W - ML - MR;
 const PLOT_H = H - MT - MB;
-const SURFACE = "#1a1a19"; // validated chart surface (dark mode)
+const SURFACE = "var(--chart-surface)"; // validated chart surface (dark mode)
 
 const SERIES = [
-  { key: "stationary", label: "stationary π(a|s)", color: "#3987e5", dashed: false },
-  { key: "timeAware", label: "time-aware πₜ(a|s)", color: "#d95926", dashed: false },
-  { key: "oracle", label: "exact oracle", color: "#95a1a8", dashed: true },
+  { key: "stationary", label: "stationary π(a|s)", color: "var(--series-blue)", dashed: false },
+  { key: "timeAware", label: "time-aware πₜ(a|s)", color: "var(--series-orange)", dashed: false },
+  { key: "oracle", label: "exact oracle", color: "var(--neutral-mark)", dashed: true },
 ] as const;
 
 type SeriesKey = (typeof SERIES)[number]["key"];
@@ -204,7 +204,7 @@ export default function KLDialExplorer() {
                 x2={ML + PLOT_W}
                 y1={y(t)}
                 y2={y(t)}
-                stroke="#232b2f"
+                stroke="var(--chart-grid)"
                 strokeWidth={1}
               />
               <text
@@ -212,7 +212,7 @@ export default function KLDialExplorer() {
                 y={y(t) + 3.5}
                 textAnchor="end"
                 fontSize={10.5}
-                fill="#75817a"
+                fill="var(--chart-muted)"
               >
                 {metric === "proxy" ? t : `${Math.round(t * 100)}%`}
               </text>
@@ -227,7 +227,7 @@ export default function KLDialExplorer() {
                 x2={ML + PLOT_W}
                 y1={y(r.v)}
                 y2={y(r.v)}
-                stroke="#75817a"
+                stroke="var(--chart-muted)"
                 strokeWidth={1}
                 strokeDasharray="2 4"
               />
@@ -236,7 +236,7 @@ export default function KLDialExplorer() {
                 y={y(r.v) - 5}
                 textAnchor="end"
                 fontSize={9.5}
-                fill="#75817a"
+                fill="var(--chart-muted)"
               >
                 {r.label}
               </text>
@@ -251,7 +251,7 @@ export default function KLDialExplorer() {
               y={H - MB + 18}
               textAnchor="middle"
               fontSize={10.5}
-              fill="#75817a"
+              fill="var(--chart-muted)"
             >
               {t.label}
             </text>
@@ -261,7 +261,7 @@ export default function KLDialExplorer() {
             y={H - 6}
             textAnchor="middle"
             fontSize={10.5}
-            fill="#75817a"
+            fill="var(--chart-muted)"
           >
             KL penalty strength β (geometric grid)
           </text>
@@ -272,7 +272,7 @@ export default function KLDialExplorer() {
             x2={x(sel)}
             y1={MT}
             y2={MT + PLOT_H}
-            stroke="#3a444a"
+            stroke="var(--chart-muted)"
             strokeWidth={1.5}
           />
           {hover !== null && hover !== sel && (
@@ -281,7 +281,7 @@ export default function KLDialExplorer() {
               x2={x(hover)}
               y1={MT}
               y2={MT + PLOT_H}
-              stroke="#2b3438"
+              stroke="var(--chart-grid)"
               strokeWidth={1}
             />
           )}
@@ -330,7 +330,7 @@ export default function KLDialExplorer() {
                 x={ML + PLOT_W + 20}
                 y={s.yPos + 2}
                 fontSize={10}
-                fill="#a9b4ad"
+                fill="var(--ink-2)"
               >
                 {s.label.split(" ")[0]} {cfg.fmt(values[s.key][23])}
               </text>

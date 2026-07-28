@@ -18,7 +18,8 @@ export default async function MarimoCell({
 }) {
   const html = await codeToHtml(code, {
     lang: "python",
-    theme: "github-dark-default",
+    // Dual theme: light inlined, dark selected by CSS (see globals.css).
+    themes: { light: "github-light", dark: "github-dark-default" },
   });
 
   return (

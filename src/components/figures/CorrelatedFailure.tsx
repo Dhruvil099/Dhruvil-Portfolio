@@ -22,9 +22,9 @@ const MT = 14;
 const MB = 42;
 const PW = W - ML - MR;
 const PH = H - MT - MB;
-const SURFACE = "#1a1a19";
-const RISK = "#d95926"; // validated on the dark surface
-const NEUTRAL = "#75817a";
+const SURFACE = "var(--chart-surface)";
+const RISK = "var(--series-orange)"; // validated on the dark surface
+const NEUTRAL = "var(--chart-muted)";
 
 export default function CorrelatedFailure() {
   const [ratePct, setRatePct] = useState(10); // each layer's failure rate, %
@@ -108,7 +108,7 @@ export default function CorrelatedFailure() {
                 x2={ML + PW}
                 y1={y(t)}
                 y2={y(t)}
-                stroke="#232b2f"
+                stroke="var(--chart-grid)"
                 strokeWidth={1}
               />
               <text
@@ -166,7 +166,7 @@ export default function CorrelatedFailure() {
             y={Math.max(y(joint) - 10, MT + 10)}
             textAnchor={x(rhoClamped) > ML + PW - 90 ? "end" : "start"}
             fontSize={11}
-            fill="#e8ede9"
+            fill="var(--ink)"
           >
             {fmtPct(joint)} both fail
           </text>

@@ -20,17 +20,17 @@ const B_LEFT = 540;
 const B_RIGHT = 728;
 const ROW_Y: Record<EffortLevel, number> = { low: 78, medium: 148, high: 218 };
 const DIFF_Y = 148;
-const SURFACE = "#1a1a19"; // validated chart surface (dark mode)
+const SURFACE = "var(--chart-surface)"; // validated chart surface (dark mode)
 
 // Ordinal single-hue ramp for the ordered effort variable (validated with the
 // palette script: monotone L, ΔL ≥ 0.06, near-surface end 2.63:1 — relief via
 // direct labels + table view). Brighter = more configured effort.
 const EFFORT_COLOR: Record<EffortLevel, string> = {
-  low: "#1c5cab",
-  medium: "#3987e5",
-  high: "#86b6ef",
+  low: "var(--effort-low)",
+  medium: "var(--series-blue)",
+  high: "var(--effort-high)",
 };
-const DIFF_COLOR = "#95a1a8"; // neutral — the contrast is unresolved
+const DIFF_COLOR = "var(--neutral-mark)"; // neutral — the contrast is unresolved
 
 type PanelCfg = {
   domainA: [number, number];
@@ -181,14 +181,14 @@ export default function EffortCIExplorer() {
           aria-label={`${outcome.label} at low, medium and high reasoning effort with task-clustered 95% confidence intervals, and the unresolved high minus low difference`}
         >
           {/* panel titles */}
-          <text x={A_LEFT} y={24} fontSize={10} fill="#75817a">
+          <text x={A_LEFT} y={24} fontSize={10} fill="var(--chart-muted)">
             rate per effort · task-clustered 95% CI
           </text>
-          <text x={B_LEFT} y={24} fontSize={10} fill="#75817a">
+          <text x={B_LEFT} y={24} fontSize={10} fill="var(--chart-muted)">
             high − low (pp)
           </text>
           {outcome.diff ? (
-            <text x={B_LEFT} y={37} fontSize={8.5} fill="#75817a">
+            <text x={B_LEFT} y={37} fontSize={8.5} fill="var(--chart-muted)">
               {cfg.directionNote}
             </text>
           ) : null}
@@ -196,8 +196,8 @@ export default function EffortCIExplorer() {
           {/* ── Panel A: rates with CIs ── */}
           {cfg.ticksA.map((t) => (
             <g key={`ta-${t}`}>
-              <line x1={xA(t)} x2={xA(t)} y1={PLOT_TOP} y2={PLOT_BOTTOM} stroke="#232b2f" strokeWidth={1} />
-              <text x={xA(t)} y={PLOT_BOTTOM + 16} textAnchor="middle" fontSize={10.5} fill="#75817a">
+              <line x1={xA(t)} x2={xA(t)} y1={PLOT_TOP} y2={PLOT_BOTTOM} stroke="var(--chart-grid)" strokeWidth={1} />
+              <text x={xA(t)} y={PLOT_BOTTOM + 16} textAnchor="middle" fontSize={10.5} fill="var(--chart-muted)">
                 {t}%
               </text>
             </g>
@@ -207,7 +207,7 @@ export default function EffortCIExplorer() {
             y={H - 10}
             textAnchor="middle"
             fontSize={10.5}
-            fill="#75817a"
+            fill="var(--chart-muted)"
           >
             % of trajectories
           </text>
@@ -220,7 +220,7 @@ export default function EffortCIExplorer() {
                 y={PLOT_TOP}
                 width={xA(bandHigh) - xA(bandLow)}
                 height={PLOT_BOTTOM - PLOT_TOP}
-                fill="#e8ede9"
+                fill="var(--ink)"
                 opacity={0.05}
               />
               <text
@@ -228,7 +228,7 @@ export default function EffortCIExplorer() {
                 y={PLOT_TOP + 12}
                 textAnchor="middle"
                 fontSize={9}
-                fill="#75817a"
+                fill="var(--chart-muted)"
               >
                 all three CIs overlap here
               </text>
@@ -242,7 +242,7 @@ export default function EffortCIExplorer() {
               <g key={e}>
                 {/* row label */}
                 <circle cx={14} cy={y} r={4} fill={EFFORT_COLOR[e]} />
-                <text x={24} y={y + 3.5} fontSize={11} fill="#a9b4ad">
+                <text x={24} y={y + 3.5} fontSize={11} fill="var(--ink-2)">
                   {e}
                 </text>
                 {/* 95% CI — drawn heavier than anything else on purpose */}
@@ -255,17 +255,17 @@ export default function EffortCIExplorer() {
                   strokeWidth={3}
                   strokeLinecap="round"
                 />
-                <text x={xA(s.ciLow)} y={y + 17} textAnchor="middle" fontSize={9} fill="#75817a">
+                <text x={xA(s.ciLow)} y={y + 17} textAnchor="middle" fontSize={9} fill="var(--chart-muted)">
                   {s.ciLow.toFixed(2)}
                 </text>
-                <text x={xA(s.ciHigh)} y={y + 17} textAnchor="middle" fontSize={9} fill="#75817a">
+                <text x={xA(s.ciHigh)} y={y + 17} textAnchor="middle" fontSize={9} fill="var(--chart-muted)">
                   {s.ciHigh.toFixed(2)}
                 </text>
                 {/* point estimate (2px surface ring) */}
                 <circle cx={xA(s.rate)} cy={y} r={5} fill={EFFORT_COLOR[e]} stroke={SURFACE} strokeWidth={2} />
-                <text x={xA(s.rate)} y={y - 11} textAnchor="middle" fontSize={11} fill="#e8ede9">
+                <text x={xA(s.rate)} y={y - 11} textAnchor="middle" fontSize={11} fill="var(--ink)">
                   {s.rate.toFixed(2)}%
-                  <tspan fontSize={9.5} fill="#75817a">
+                  <tspan fontSize={9.5} fill="var(--chart-muted)">
                     {" "}
                     · {s.successes}/{s.trials}
                   </tspan>
@@ -299,10 +299,10 @@ export default function EffortCIExplorer() {
                     x2={xB(t)}
                     y1={PLOT_TOP}
                     y2={PLOT_BOTTOM}
-                    stroke={t === 0 ? "#75817a" : "#232b2f"}
+                    stroke={t === 0 ? "var(--chart-muted)" : "var(--chart-grid)"}
                     strokeWidth={t === 0 ? 1.5 : 1}
                   />
-                  <text x={xB(t)} y={PLOT_BOTTOM + 16} textAnchor="middle" fontSize={10.5} fill="#75817a">
+                  <text x={xB(t)} y={PLOT_BOTTOM + 16} textAnchor="middle" fontSize={10.5} fill="var(--chart-muted)">
                     {t === 0 ? "0" : fmtSigned(t, 0)}
                   </text>
                 </g>
@@ -312,7 +312,7 @@ export default function EffortCIExplorer() {
                 y={PLOT_TOP + 12}
                 textAnchor="middle"
                 fontSize={9}
-                fill="#75817a"
+                fill="var(--chart-muted)"
                 stroke={SURFACE}
                 strokeWidth={4}
                 paintOrder="stroke"
@@ -324,7 +324,7 @@ export default function EffortCIExplorer() {
                 y={H - 10}
                 textAnchor="middle"
                 fontSize={10.5}
-                fill="#75817a"
+                fill="var(--chart-muted)"
               >
                 percentage points
               </text>
@@ -337,10 +337,10 @@ export default function EffortCIExplorer() {
                 strokeWidth={3}
                 strokeLinecap="round"
               />
-              <text x={xB(outcome.diff.ciLow)} y={DIFF_Y + 17} textAnchor="middle" fontSize={9} fill="#75817a">
+              <text x={xB(outcome.diff.ciLow)} y={DIFF_Y + 17} textAnchor="middle" fontSize={9} fill="var(--chart-muted)">
                 {fmtSigned(outcome.diff.ciLow)}
               </text>
-              <text x={xB(outcome.diff.ciHigh)} y={DIFF_Y + 17} textAnchor="middle" fontSize={9} fill="#75817a">
+              <text x={xB(outcome.diff.ciHigh)} y={DIFF_Y + 17} textAnchor="middle" fontSize={9} fill="var(--chart-muted)">
                 {fmtSigned(outcome.diff.ciHigh)}
               </text>
               <circle
@@ -351,10 +351,10 @@ export default function EffortCIExplorer() {
                 stroke={SURFACE}
                 strokeWidth={2}
               />
-              <text x={xB(outcome.diff.estimate)} y={DIFF_Y - 11} textAnchor="middle" fontSize={11} fill="#e8ede9">
+              <text x={xB(outcome.diff.estimate)} y={DIFF_Y - 11} textAnchor="middle" fontSize={11} fill="var(--ink)">
                 {fmtSigned(outcome.diff.estimate)} pp
               </text>
-              <text x={xB(outcome.diff.estimate)} y={DIFF_Y + 32} textAnchor="middle" fontSize={9.5} fill="#75817a">
+              <text x={xB(outcome.diff.estimate)} y={DIFF_Y + 32} textAnchor="middle" fontSize={9.5} fill="var(--chart-muted)">
                 {fmtP(outcome.diff.p)}
               </text>
               <rect
@@ -374,10 +374,10 @@ export default function EffortCIExplorer() {
             </g>
           ) : (
             <g>
-              <text x={(B_LEFT + B_RIGHT) / 2} y={DIFF_Y - 8} textAnchor="middle" fontSize={10.5} fill="#75817a">
+              <text x={(B_LEFT + B_RIGHT) / 2} y={DIFF_Y - 8} textAnchor="middle" fontSize={10.5} fill="var(--chart-muted)">
                 no high − low contrast
               </text>
-              <text x={(B_LEFT + B_RIGHT) / 2} y={DIFF_Y + 8} textAnchor="middle" fontSize={10.5} fill="#75817a">
+              <text x={(B_LEFT + B_RIGHT) / 2} y={DIFF_Y + 8} textAnchor="middle" fontSize={10.5} fill="var(--chart-muted)">
                 reported for this outcome
               </text>
             </g>

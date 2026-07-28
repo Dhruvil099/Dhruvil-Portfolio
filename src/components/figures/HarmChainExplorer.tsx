@@ -21,15 +21,15 @@ const COVERAGE: Record<
 > = {
   tested: {
     label: "evidence bears on this link",
-    dot: "#3987e5",
-    ring: "border-[#3987e5]",
-    text: "text-[#86b6ef]",
+    dot: "var(--series-blue)",
+    ring: "border-[var(--series-blue)]",
+    text: "text-[var(--effort-high)]",
   },
   partial: {
     label: "only a simplified sandbox version",
-    dot: "#1c5cab",
-    ring: "border-[#1c5cab]",
-    text: "text-[#6f9fd8]",
+    dot: "var(--effort-low)",
+    ring: "border-[var(--effort-low)]",
+    text: "text-[var(--effort-medium)]",
   },
   untested: {
     label: "not tested by either study",

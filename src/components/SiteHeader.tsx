@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { profile } from "@/data/profile";
 import { hasResume } from "@/lib/resume";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function SiteHeader() {
   // Hidden until public/resume.pdf exists; then it appears automatically.
@@ -34,6 +35,7 @@ export default function SiteHeader() {
           >
             GitHub
           </a>
+          <ThemeToggle />
         </nav>
       </div>
     </header>

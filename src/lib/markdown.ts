@@ -28,7 +28,10 @@ async function toHtml(md: string): Promise<string> {
     // Defaults: renders HTML + MathML (screen-reader friendly) and marks a bad
     // expression inline instead of throwing, so one typo can't fail the build.
     .use(rehypeKatex)
-    .use(rehypeShiki, { theme: "github-dark-default" })
+    // Dual theme: light is inlined, dark is selected by CSS in globals.css.
+    .use(rehypeShiki, {
+      themes: { light: "github-light", dark: "github-dark-default" },
+    })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(md);
   return String(file);

@@ -1,33 +1,167 @@
 @import "tailwindcss";
 
+/* Make Tailwind's `dark:` variant follow the same rule as the tokens below:
+   OS preference unless an explicit choice overrides it. */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(html:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+  &:where(html[data-theme="dark"] *) {
+    @slot;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Theme tokens.
+
+   Light is the default; dark is applied by the OS preference OR by an explicit
+   data-theme stamp from the toggle. The `:where(:not([data-theme="light"]))`
+   guard lets an explicit light choice beat OS-dark, and the `[data-theme]`
+   blocks win in both directions.
+
+   Chart colours are separate tokens from UI colours: each mode's steps are
+   selected and validated against that mode's surface (see the dataviz
+   validator), not flipped automatically.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: light;
+
+  --bg: #f7f8f7;
+  --surface: #ffffff;
+  --surface-2: #fcfcfb;
+  --line: #e3e7e4;
+  --ink: #12171a;
+  --ink-2: #46524e;
+  --ink-3: #636e69;
+  --blue: #1f66bd; /* text/UI blue: clears 4.5:1 on --bg */
+  --orange: #c2481a;
+
+  /* charts */
+  --chart-surface: #fcfcfb;
+  --chart-grid: #e3e7e4;
+  --chart-muted: #636e69;
+  --series-blue: #2a78d6; /* validated mark colour, light surface */
+  --series-orange: #eb6834;
+  --neutral-mark: #6b7671;
+
+  /* ordinal effort ramp: more effort = more visual weight (darker on light) */
+  --effort-low: #88b6ec;
+  --effort-medium: #2a78d6;
+  --effort-high: #14417a;
+
+  /* transfer-matrix sequential ramp, light→dark, plus a label ink per stop */
+  --tm-0: #fbe4d6;
+  --tm-1: #f2a878;
+  --tm-2: #d95926;
+  --tm-3: #8f3d15;
+  /* light ramp runs light→dark, so only the darkest stop needs pale ink */
+  --tm-ink-0: #452110;
+  --tm-ink-1: #452110;
+  --tm-ink-2: #452110;
+  --tm-ink-3: #fdf1e9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+
+    --bg: #0d1215;
+    --surface: #14191c;
+    --surface-2: #1a1a19;
+    --line: #232b2f;
+    --ink: #e8ede9;
+    --ink-2: #a9b4ad;
+    --ink-3: #75817a;
+    --blue: #3987e5;
+    --orange: #d95926;
+
+    --chart-surface: #1a1a19;
+    --chart-grid: #232b2f;
+    --chart-muted: #75817a;
+    --series-blue: #3987e5;
+    --series-orange: #d95926;
+    --neutral-mark: #95a1a8;
+
+    /* on a dark surface, more effort = brighter */
+    --effort-low: #1c5cab;
+    --effort-medium: #3987e5;
+    --effort-high: #86b6ef;
+
+    --tm-0: #452110;
+    --tm-1: #8f3d15;
+    --tm-2: #d95926;
+    --tm-3: #f2a878;
+    --tm-ink-0: #f4ede7;
+    --tm-ink-1: #f4ede7;
+    --tm-ink-2: #131313;
+    --tm-ink-3: #131313;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0d1215;
+  --surface: #14191c;
+  --surface-2: #1a1a19;
+  --line: #232b2f;
+  --ink: #e8ede9;
+  --ink-2: #a9b4ad;
+  --ink-3: #75817a;
+  --blue: #3987e5;
+  --orange: #d95926;
+
+  --chart-surface: #1a1a19;
+  --chart-grid: #232b2f;
+  --chart-muted: #75817a;
+  --series-blue: #3987e5;
+  --series-orange: #d95926;
+  --neutral-mark: #95a1a8;
+
+  --effort-low: #1c5cab;
+  --effort-medium: #3987e5;
+  --effort-high: #86b6ef;
+
+  --tm-0: #452110;
+  --tm-1: #8f3d15;
+  --tm-2: #d95926;
+  --tm-3: #f2a878;
+  --tm-ink-0: #f4ede7;
+  --tm-ink-1: #f4ede7;
+  --tm-ink-2: #131313;
+  --tm-ink-3: #131313;
+}
+
 @theme inline {
-  --color-bg: #0d1215;
-  --color-surface: #14191c;
-  --color-surface-2: #1a1a19;
-  --color-line: #232b2f;
-  --color-ink: #e8ede9;
-  --color-ink-2: #a9b4ad;
-  --color-ink-3: #75817a;
-  --color-blue: #3987e5;
-  --color-orange: #d95926;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-blue: var(--blue);
+  --color-orange: var(--orange);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-ink);
+  background: var(--bg);
+  color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--color-blue) 40%, transparent);
+  background: color-mix(in oklab, var(--blue) 30%, transparent);
 }
 
 /* ---------- article prose ---------- */
@@ -35,10 +169,10 @@ body {
 .prose-article {
   font-size: 1.0625rem;
   line-height: 1.75;
-  color: var(--color-ink-2);
+  color: var(--ink-2);
 }
 .prose-article h2 {
-  color: var(--color-ink);
+  color: var(--ink);
   font-size: 1.5rem;
   font-weight: 650;
   letter-spacing: -0.01em;
@@ -46,7 +180,7 @@ body {
   scroll-margin-top: 5rem;
 }
 .prose-article h3 {
-  color: var(--color-ink);
+  color: var(--ink);
   font-size: 1.17rem;
   font-weight: 600;
   margin: 2.25rem 0 0.75rem;
@@ -55,17 +189,17 @@ body {
   margin: 1rem 0;
 }
 .prose-article strong {
-  color: var(--color-ink);
+  color: var(--ink);
   font-weight: 600;
 }
 .prose-article a {
-  color: var(--color-blue);
+  color: var(--blue);
   text-decoration: underline;
-  text-decoration-color: color-mix(in oklab, var(--color-blue) 40%, transparent);
+  text-decoration-color: color-mix(in oklab, var(--blue) 40%, transparent);
   text-underline-offset: 3px;
 }
 .prose-article a:hover {
-  text-decoration-color: var(--color-blue);
+  text-decoration-color: var(--blue);
 }
 .prose-article ul,
 .prose-article ol {
@@ -83,18 +217,18 @@ body {
   padding-left: 0.25rem;
 }
 .prose-article li::marker {
-  color: var(--color-ink-3);
+  color: var(--ink-3);
 }
 .prose-article blockquote {
-  border-left: 3px solid var(--color-blue);
+  border-left: 3px solid var(--blue);
   padding: 0.25rem 0 0.25rem 1.25rem;
   margin: 1.5rem 0;
-  color: var(--color-ink);
+  color: var(--ink);
   font-style: italic;
 }
 .prose-article hr {
   border: none;
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid var(--line);
   margin: 2.5rem 0;
 }
 .prose-article img {
@@ -102,30 +236,30 @@ body {
   width: 100%;
   height: auto;
   border-radius: 0.75rem;
-  border: 1px solid var(--color-line);
-  background: var(--color-surface-2);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
   margin: 1.75rem 0 0.5rem;
 }
 /* caption = a paragraph containing only an <em>, right after an image */
 .prose-article p:has(> em:only-child) {
   text-align: center;
   font-size: 0.875rem;
-  color: var(--color-ink-3);
+  color: var(--ink-3);
   margin: 0.35rem auto 1.75rem;
   max-width: 44rem;
 }
 .prose-article code {
   font-family: var(--font-mono), monospace;
   font-size: 0.875em;
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-line);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 0.3rem;
   padding: 0.1rem 0.35rem;
-  color: var(--color-ink);
+  color: var(--ink);
 }
 .prose-article pre {
-  background: var(--color-surface-2) !important;
-  border: 1px solid var(--color-line);
+  background: var(--surface-2) !important;
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   padding: 1rem 1.25rem;
   overflow-x: auto;
@@ -147,14 +281,14 @@ body {
   margin: 1.5rem 0;
 }
 .prose-article th {
-  color: var(--color-ink);
+  color: var(--ink);
   text-align: left;
   font-weight: 600;
-  border-bottom: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--line);
   padding: 0.5rem 0.75rem;
 }
 .prose-article td {
-  border-bottom: 1px solid color-mix(in oklab, var(--color-line) 60%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--line) 60%, transparent);
   padding: 0.5rem 0.75rem;
   vertical-align: top;
 }
@@ -162,9 +296,9 @@ body {
 /* ---------- math (KaTeX) ---------- */
 
 .prose-article .katex {
-  color: var(--color-ink);
+  color: var(--ink);
 }
-/* Display equations can be wider than the column (the article has a long
+/* Display equations can be wider than the column (one article has a long
    arrow chain): scroll inside their own box, never push the page sideways. */
 .prose-article .katex-display {
   margin: 1.75rem 0;
@@ -173,19 +307,36 @@ body {
   overflow-y: hidden;
 }
 
-/* ---------- shiki code inside marimo cells ---------- */
+/* ---------- shiki (dual theme) ---------- */
 
+.marimo-code pre,
+.prose-article pre {
+  overflow-x: auto;
+}
 .marimo-code pre {
   background: transparent !important;
   padding: 1rem 1.25rem;
-  overflow-x: auto;
   font-size: 0.8rem;
   line-height: 1.65;
   margin: 0;
+}
+/* Shiki emits both themes as custom properties; light is inline, dark is
+   selected here so code follows the rest of the page. */
+/* Only --shiki-dark (and --shiki-dark-bg) are emitted, so reference just
+   those; the pre background is set by .prose-article/.marimo-code anyway. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .shiki,
+  :root:where(:not([data-theme="light"])) .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+}
+:root[data-theme="dark"] .shiki,
+:root[data-theme="dark"] .shiki span {
+  color: var(--shiki-dark) !important;
 }
 
 /* ---------- range slider ---------- */
 
 input[type="range"] {
-  accent-color: var(--color-blue);
+  accent-color: var(--blue);
 }
