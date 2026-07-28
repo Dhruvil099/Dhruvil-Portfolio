@@ -8,7 +8,8 @@ import NotebookLink from "@/components/NotebookLink";
 import Figure from "@/components/Figure";
 import CodeCopyButtons from "@/components/CodeCopyButtons";
 import DriveVideo from "@/components/DriveVideo";
-import DemoFrame from "@/components/DemoFrame";
+import ArtifactModal from "@/components/ArtifactModal";
+import { statguideArtifactHtml } from "@/data/statguideArtifact";
 import HarmChainExplorer from "@/components/figures/HarmChainExplorer";
 import CorrelatedFailure from "@/components/figures/CorrelatedFailure";
 import { NOTEBOOK_URL as KL_NOTEBOOK_URL } from "@/data/klExperiment";
@@ -143,19 +144,23 @@ function InteractiveCell({ name }: { name: string }) {
       );
     case "statguide-demo":
       return (
-        <DemoFrame
-          src="/projects/flan-t5-statguide/demo.html"
+        <ArtifactModal
+          files={{ "/index.html": statguideArtifactHtml }}
           poster="/projects/flan-t5-statguide/demo-poster.jpg"
-          title="t&Z-testAI — the served interface (compiled snapshot)"
+          title="t&Z-testAI — the deterministic half, live"
+          note="runs in your browser · no backend"
+          grantMedia
           caption={
             <>
-              A captured page from the running app: a pasted word problem, the
-              four numbers the model extracted, the worked solution scipy
-              produced from them, and the plot drawn from its output. The
-              snapshot is inert — no backend, no model, no scripts — so nothing
-              here is recomputed; it is the interface exactly as it was. The
-              fine-tuned weights themselves no longer exist; see &ldquo;Where it
-              actually stands&rdquo;.
+              The original app cannot run here: the saved page&apos;s own bundles
+              were never part of the artifact, and the fine-tuned weights are
+              gone (see &ldquo;Where it actually stands&rdquo;). What can be
+              rebuilt exactly is the half this article argues for. Pick an
+              example or type the four numbers yourself — the step the model was
+              responsible for — and everything after it is recomputed live: the
+              corrected S, the critical value from an inverse CDF, the test
+              statistic, the decision and the plot. The critical values match
+              the ones the real backend produced to machine precision.
             </>
           }
         />
