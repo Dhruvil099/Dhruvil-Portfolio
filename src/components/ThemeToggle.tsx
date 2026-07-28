@@ -2,14 +2,15 @@
 
 import { useSyncExternalStore } from "react";
 
-type Choice = "light" | "dark" | "system";
+type Choice = "light" | "dark";
 
 const STORAGE_KEY = "theme";
 
-// Tiny external store: the source of truth is localStorage + the data-theme
-// stamp, so the toggle stays in sync with the inline script in layout.tsx and
-// with other tabs. Using useSyncExternalStore (rather than useState in an
-// effect) keeps the server snapshot explicit and avoids a hydration mismatch.
+// Light is the site default; dark is opt-in and remembered. The source of
+// truth is localStorage + the data-theme stamp, so this stays in sync with the
+// inline script in layout.tsx and with other tabs. useSyncExternalStore (rather
+// than useState in an effect) keeps the server snapshot explicit and avoids a
+// hydration mismatch.
 const listeners = new Set<() => void>();
 
 function subscribe(onChange: () => void) {
@@ -23,47 +24,33 @@ function subscribe(onChange: () => void) {
 
 function getSnapshot(): Choice {
   try {
-    const v = localStorage.getItem(STORAGE_KEY);
-    return v === "light" || v === "dark" ? v : "system";
+    return localStorage.getItem(STORAGE_KEY) === "dark" ? "dark" : "light";
   } catch {
-    return "system";
+    return "light";
   }
 }
 
 function getServerSnapshot(): Choice {
-  return "system";
+  return "light";
 }
 
 function apply(choice: Choice) {
   const root = document.documentElement;
+  if (choice === "dark") root.dataset.theme = "dark";
+  else root.removeAttribute("data-theme");
   try {
-    if (choice === "system") {
-      root.removeAttribute("data-theme");
-      localStorage.removeItem(STORAGE_KEY);
-    } else {
-      root.dataset.theme = choice;
-      localStorage.setItem(STORAGE_KEY, choice);
-    }
+    if (choice === "dark") localStorage.setItem(STORAGE_KEY, "dark");
+    else localStorage.removeItem(STORAGE_KEY);
   } catch {
     /* private mode: the stamp still applies for this page view */
-    if (choice === "system") root.removeAttribute("data-theme");
-    else root.dataset.theme = choice;
   }
   listeners.forEach((l) => l());
 }
 
-const NEXT: Record<Choice, Choice> = {
-  light: "dark",
-  dark: "system",
-  system: "light",
-};
-const LABEL: Record<Choice, string> = {
-  light: "Light",
-  dark: "Dark",
-  system: "System",
-};
+const NEXT: Record<Choice, Choice> = { light: "dark", dark: "light" };
+const LABEL: Record<Choice, string> = { light: "Light", dark: "Dark" };
 
-/** Cycles light → dark → system; "system" hands control back to the OS. */
+/** Toggles light ↔ dark. Light is the default; only dark is persisted. */
 export default function ThemeToggle() {
   const choice = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 

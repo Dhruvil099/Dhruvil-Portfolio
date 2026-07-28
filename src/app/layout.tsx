@@ -43,11 +43,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Applies the stored theme before first paint so there is no flash.
-            No stored choice means the OS preference is used. */}
+        {/* Applies a stored dark choice before first paint so there is no
+            flash. Light is the default; the OS preference is not consulted. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`,
+            __html: `try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}`,
           }}
         />
       </head>

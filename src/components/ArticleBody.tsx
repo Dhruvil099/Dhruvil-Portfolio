@@ -6,6 +6,7 @@ import EffortCIExplorer from "@/components/marimo/EffortCIExplorer";
 import TransferMatrix from "@/components/marimo/TransferMatrix";
 import NotebookLink from "@/components/NotebookLink";
 import Figure from "@/components/Figure";
+import CodeCopyButtons from "@/components/CodeCopyButtons";
 import DriveVideo from "@/components/DriveVideo";
 import DemoFrame from "@/components/DemoFrame";
 import HarmChainExplorer from "@/components/figures/HarmChainExplorer";
@@ -145,7 +146,7 @@ function InteractiveCell({ name }: { name: string }) {
         <DemoFrame
           src="/projects/flan-t5-statguide/demo.html"
           poster="/projects/flan-t5-statguide/demo-poster.jpg"
-          title="t&Z-testAI — the served interface"
+          title="t&Z-testAI — the served interface (compiled snapshot)"
           caption={
             <>
               A captured page from the running app: a pasted word problem, the
@@ -168,6 +169,7 @@ export default async function ArticleBody({ md }: { md: string }) {
   const chunks = await renderArticleChunks(md);
   return (
     <div className="prose-article">
+      <CodeCopyButtons />
       {chunks.map((chunk, i) =>
         chunk.type === "html" ? (
           <div key={i} dangerouslySetInnerHTML={{ __html: chunk.html }} />

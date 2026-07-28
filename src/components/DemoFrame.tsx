@@ -45,7 +45,7 @@ export default function DemoFrame({
         <button
           onClick={() => setOpen(true)}
           className="group relative block w-full cursor-pointer text-left"
-          aria-label={`Open the interactive demo: ${title}`}
+          aria-label={`Open the demo: ${title}`}
         >
           <div className="relative aspect-[16/10] overflow-hidden bg-bg">
             {poster ? (
@@ -58,7 +58,7 @@ export default function DemoFrame({
             ) : null}
             <span className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-bg/90 via-transparent to-transparent p-5">
               <span className="rounded-lg bg-blue px-4 py-2 text-sm font-medium text-white shadow-lg">
-                Open the interactive demo →
+                Open the demo →
               </span>
             </span>
           </div>

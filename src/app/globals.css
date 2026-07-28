@@ -2,24 +2,16 @@
 
 /* Make Tailwind's `dark:` variant follow the same rule as the tokens below:
    OS preference unless an explicit choice overrides it. */
-@custom-variant dark {
-  @media (prefers-color-scheme: dark) {
-    &:where(html:not([data-theme="light"]) *) {
-      @slot;
-    }
-  }
-  &:where(html[data-theme="dark"] *) {
-    @slot;
-  }
-}
+/* Light is the default for everyone; dark is opt-in via the header toggle,
+   so `dark:` keys off the explicit stamp rather than the OS preference. */
+@custom-variant dark (&:where(html[data-theme="dark"] *));
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Theme tokens.
 
-   Light is the default; dark is applied by the OS preference OR by an explicit
-   data-theme stamp from the toggle. The `:where(:not([data-theme="light"]))`
-   guard lets an explicit light choice beat OS-dark, and the `[data-theme]`
-   blocks win in both directions.
+   Light is the default for every visitor. Dark is opt-in: it applies only
+   when the header toggle stamps data-theme="dark" on <html>. The OS
+   preference is deliberately not consulted.
 
    Chart colours are separate tokens from UI colours: each mode's steps are
    selected and validated against that mode's surface (see the dataviz
@@ -64,76 +56,6 @@
   --tm-ink-3: #fdf1e9;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:where(:not([data-theme="light"])) {
-    color-scheme: dark;
-
-    --bg: #0d1215;
-    --surface: #14191c;
-    --surface-2: #1a1a19;
-    --line: #232b2f;
-    --ink: #e8ede9;
-    --ink-2: #a9b4ad;
-    --ink-3: #75817a;
-    --blue: #3987e5;
-    --orange: #d95926;
-
-    --chart-surface: #1a1a19;
-    --chart-grid: #232b2f;
-    --chart-muted: #75817a;
-    --series-blue: #3987e5;
-    --series-orange: #d95926;
-    --neutral-mark: #95a1a8;
-
-    /* on a dark surface, more effort = brighter */
-    --effort-low: #1c5cab;
-    --effort-medium: #3987e5;
-    --effort-high: #86b6ef;
-
-    --tm-0: #452110;
-    --tm-1: #8f3d15;
-    --tm-2: #d95926;
-    --tm-3: #f2a878;
-    --tm-ink-0: #f4ede7;
-    --tm-ink-1: #f4ede7;
-    --tm-ink-2: #131313;
-    --tm-ink-3: #131313;
-  }
-}
-
-:root[data-theme="dark"] {
-  color-scheme: dark;
-
-  --bg: #0d1215;
-  --surface: #14191c;
-  --surface-2: #1a1a19;
-  --line: #232b2f;
-  --ink: #e8ede9;
-  --ink-2: #a9b4ad;
-  --ink-3: #75817a;
-  --blue: #3987e5;
-  --orange: #d95926;
-
-  --chart-surface: #1a1a19;
-  --chart-grid: #232b2f;
-  --chart-muted: #75817a;
-  --series-blue: #3987e5;
-  --series-orange: #d95926;
-  --neutral-mark: #95a1a8;
-
-  --effort-low: #1c5cab;
-  --effort-medium: #3987e5;
-  --effort-high: #86b6ef;
-
-  --tm-0: #452110;
-  --tm-1: #8f3d15;
-  --tm-2: #d95926;
-  --tm-3: #f2a878;
-  --tm-ink-0: #f4ede7;
-  --tm-ink-1: #f4ede7;
-  --tm-ink-2: #131313;
-  --tm-ink-3: #131313;
-}
 
 @theme inline {
   --color-bg: var(--bg);
@@ -258,6 +180,7 @@ body {
   color: var(--ink);
 }
 .prose-article pre {
+  position: relative;
   background: var(--surface-2) !important;
   border: 1px solid var(--line);
   border-radius: 0.75rem;
@@ -324,15 +247,48 @@ body {
    selected here so code follows the rest of the page. */
 /* Only --shiki-dark (and --shiki-dark-bg) are emitted, so reference just
    those; the pre background is set by .prose-article/.marimo-code anyway. */
-@media (prefers-color-scheme: dark) {
-  :root:where(:not([data-theme="light"])) .shiki,
-  :root:where(:not([data-theme="light"])) .shiki span {
-    color: var(--shiki-dark) !important;
-  }
-}
 :root[data-theme="dark"] .shiki,
 :root[data-theme="dark"] .shiki span {
   color: var(--shiki-dark) !important;
+}
+
+/* ---------- code copy button ---------- */
+
+.code-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-3);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+}
+pre:hover .code-copy,
+.code-copy:focus-visible {
+  opacity: 1;
+}
+.code-copy:hover {
+  color: var(--ink);
+  border-color: var(--ink-3);
+}
+.code-copy.is-copied {
+  opacity: 1;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+/* touch devices have no hover: keep it visible */
+@media (hover: none) {
+  .code-copy {
+    opacity: 0.75;
+  }
 }
 
 /* ---------- range slider ---------- */
