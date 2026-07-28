@@ -6,14 +6,14 @@
 
 export const profile = {
   name: "Dhruvil Shah",
-  shortRole: "AI Safety · RL · Post-training",
-  role: "Data Engineer exploring technical AI safety through the RL and post-training stack",
+  shortRole: "Empirical AI safety · RL & post-training · Evaluations",
+  role: "Data engineer at Rezinix, doing independent empirical AI safety research on reward optimization, agentic risk and evaluation",
   tagline:
     "I build small, auditable experiments about how reward optimization goes wrong — and write them up honestly, corrections included.",
 
   // Shown in the hero, one paragraph.
   intro:
-    "I work with the pipeline that decides how modern AI models behave — reinforcement learning and post-training — and I am moving my career toward making that pipeline safe. My current focus: reward hacking, specification gaming, and what task-success metrics fail to see.",
+    "I do the unglamorous half of research: build the experiment, then try to break my own result. A 36.9-million-episode study of KL regularisation under a gameable reward lost its headline finding to a confound I found myself, so I rebuilt it around a time-aware policy and an exact oracle. A 9,348-row AgentDojo pilot asking whether reasoning effort changes prompt-injection robustness resolved no effect, and I published it that way. I want to do this full-time — control evaluations, chain-of-thought monitorability and trusted monitoring for agents that hold real permissions — and I am starting on mechanistic interpretability and scalable oversight to get there.",
 
   // Shown in the About section, one paragraph each. `*text*` renders italic.
   about: [
