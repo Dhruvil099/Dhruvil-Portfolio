@@ -67,20 +67,23 @@ export const profile = {
     {
       name: "Secure Data Transmission",
       blurb:
-        "File-to-video encoding system with ML-based pixel clustering and Rust-powered processing. Winner, college Tech Expo (cybersecurity).",
-      tech: ["Rust", "Python", "OpenCV", "Docker"],
+        "Final-year project I originated and led: arbitrary files travel through an ordinary-looking video and come back with their metadata intact. I framed the carrier-embedding stage as a clustering and assignment problem and built that layer myself.",
+      tech: ["Rust", "Python", "OpenCV", "MiniBatch K-Means", "Hungarian algorithm"],
+      href: "/blogs/video-steganography-optimization",
     },
     {
       name: "EmotiSense",
       blurb:
         "Real-time visual + audio emotion tracking (CNN + RNN) with session-level behaviour analysis. Published in Library Progress International.",
       tech: ["TensorFlow", "Librosa", "Flask"],
+      href: "",
     },
     {
       name: "FLAN-T5 StatGuide",
       blurb:
         "Statistical hypothesis-testing assistant: fine-tuned FLAN-T5 combined with classical test algorithms to work around embedding limitations.",
       tech: ["PyTorch", "Transformers", "React"],
+      href: "",
     },
   ],
 } as const;

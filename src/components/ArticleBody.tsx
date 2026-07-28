@@ -6,6 +6,7 @@ import EffortCIExplorer from "@/components/marimo/EffortCIExplorer";
 import TransferMatrix from "@/components/marimo/TransferMatrix";
 import NotebookLink from "@/components/NotebookLink";
 import Figure from "@/components/Figure";
+import DriveVideo from "@/components/DriveVideo";
 import HarmChainExplorer from "@/components/figures/HarmChainExplorer";
 import CorrelatedFailure from "@/components/figures/CorrelatedFailure";
 import { NOTEBOOK_URL as KL_NOTEBOOK_URL } from "@/data/klExperiment";
@@ -128,6 +129,15 @@ function InteractiveCell({ name }: { name: string }) {
         >
           <CorrelatedFailure />
         </Figure>
+      );
+    case "stego-demo":
+      return (
+        <DriveVideo
+          fileId="1BDrCmIqmml9tKsDCvl0nR1WI9F8KiCq6"
+          poster="/projects/secure-data-transmission/demo-poster.jpg"
+          title="Five-minute pitch demonstration of the complete pipeline"
+          caption="Files and metadata in, ZIP packaging, ISG embedding, the advanced encode pass, playback of the public video, reconstruction and recovery."
+        />
       );
     default:
       return null;

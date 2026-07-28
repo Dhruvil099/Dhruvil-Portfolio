@@ -140,22 +140,45 @@ export default function Home() {
       <section className="border-t border-line/70 py-16">
         <SectionHeading id="projects">Selected projects</SectionHeading>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {profile.projects.map((p) => (
-            <div key={p.name} className="rounded-xl border border-line bg-surface p-5">
-              <h3 className="font-semibold text-ink">{p.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-2">{p.blurb}</p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-line px-2 py-0.5 font-mono text-[10px] text-ink-3"
-                  >
-                    {t}
-                  </span>
-                ))}
+          {profile.projects.map((p) => {
+            const body = (
+              <>
+                <h3 className="font-semibold text-ink">{p.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-2">{p.blurb}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {p.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-line px-2 py-0.5 font-mono text-[10px] text-ink-3"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                {p.href ? (
+                  <div className="mt-3 text-xs text-blue group-hover:underline">
+                    Read the case study →
+                  </div>
+                ) : null}
+              </>
+            );
+            return p.href ? (
+              <Link
+                key={p.name}
+                href={p.href}
+                className="group flex flex-col rounded-xl border border-line bg-surface p-5 transition-colors hover:border-ink-3/60"
+              >
+                {body}
+              </Link>
+            ) : (
+              <div
+                key={p.name}
+                className="flex flex-col rounded-xl border border-line bg-surface p-5"
+              >
+                {body}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

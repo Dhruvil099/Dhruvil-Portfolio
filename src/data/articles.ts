@@ -77,6 +77,20 @@ export const articles: Article[] = [
     status: "published",
     file: "reasoning-effort-prompt-injection.md",
   },
+  {
+    slug: "video-steganography-optimization",
+    title: "The optimization problem hidden inside video steganography",
+    dek:
+      "My final-year project: a two-stage system that carries arbitrary files through an ordinary-looking video and back, with filenames and metadata intact. The hard part was not hiding the data. It was realising that placing it into real footage is a clustering and assignment problem.",
+    date: "2026-07-28",
+    readingTime: "14 min read",
+    cover: "/projects/secure-data-transmission/demo-poster.jpg",
+    coverAlt:
+      "Screen recording of the pipeline demo showing source files with their metadata, a file browser of test documents, and a terminal running the encoder",
+    tags: ["project case study", "steganography", "Rust", "OpenCV", "clustering", "Hungarian algorithm"],
+    status: "published",
+    file: "video-steganography-optimization.md",
+  },
 ];
 
 export const publishedArticles = articles.filter((a) => a.status === "published");
