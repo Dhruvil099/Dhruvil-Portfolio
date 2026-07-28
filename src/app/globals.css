@@ -56,6 +56,46 @@
   --tm-ink-3: #fdf1e9;
 }
 
+/* Dark is opt-in: these apply only once the header toggle (or the inline
+   script in layout.tsx) stamps data-theme="dark" on <html>. No
+   prefers-color-scheme block, so the OS preference stays out of it. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0d1215;
+  --surface: #14191c;
+  --surface-2: #1a1a19;
+  --line: #232b2f;
+  --ink: #e8ede9;
+  --ink-2: #a9b4ad;
+  --ink-3: #75817a;
+  --blue: #3987e5;
+  --orange: #d95926;
+
+  /* charts */
+  --chart-surface: #1a1a19;
+  --chart-grid: #232b2f;
+  --chart-muted: #75817a;
+  --series-blue: #3987e5;
+  --series-orange: #d95926;
+  --neutral-mark: #95a1a8;
+
+  /* on a dark surface, more effort = brighter */
+  --effort-low: #1c5cab;
+  --effort-medium: #3987e5;
+  --effort-high: #86b6ef;
+
+  /* dark ramp runs dark→light, so the two brightest stops take dark ink */
+  --tm-0: #452110;
+  --tm-1: #8f3d15;
+  --tm-2: #d95926;
+  --tm-3: #f2a878;
+  --tm-ink-0: #f4ede7;
+  --tm-ink-1: #f4ede7;
+  --tm-ink-2: #131313;
+  --tm-ink-3: #131313;
+}
+
 
 @theme inline {
   --color-bg: var(--bg);
