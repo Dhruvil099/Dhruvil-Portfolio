@@ -160,7 +160,17 @@ function InteractiveCell({ name }: { name: string }) {
               responsible for — and everything after it is recomputed live: the
               corrected S, the critical value from an inverse CDF, the test
               statistic, the decision and the plot. The critical values match
-              the ones the real backend produced to machine precision.
+              the ones the real backend produced to machine precision. The
+              captured original interface is also{" "}
+              <a
+                href="/projects/flan-t5-statguide/demo.html"
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue underline"
+              >
+                viewable as a standalone page
+              </a>
+              ; it only renders correctly outside a frame.
             </>
           }
         />
