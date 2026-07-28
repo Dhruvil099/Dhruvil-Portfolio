@@ -98,9 +98,9 @@ export const articles: Article[] = [
       "A fine-tuned flan-t5-large whose only job is reading: it extracts four numbers from a statistics word problem and scipy does the rest. Two builds, three approaches that failed first, a bug that took a month to find because my metric could not see it, and a second module where I moved the numbers out of the model's output entirely.",
     date: "2026-07-29",
     readingTime: "45 min read",
-    cover: "/projects/flan-t5-statguide/cover-temp.jpg",
+    cover: "/projects/flan-t5-statguide/cover.jpg",
     coverAlt:
-      "The t&Z-testAI chat interface: a pasted hypothesis-testing word problem, the worked LaTeX solution with the computed test statistic, and the t-distribution plot with the critical region shaded",
+      "A robot reads a page of text through a magnifying glass; the few values it finds lift off as glowing tokens and travel into a brass calculating mechanism, which outputs a distribution plot with its tail shaded",
     tags: [
       "project case study",
       "flan-t5",
