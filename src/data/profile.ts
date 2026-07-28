@@ -6,14 +6,14 @@
 
 export const profile = {
   name: "Dhruvil Shah",
-  shortRole: "Empirical AI safety · RL & post-training · Agent evaluations",
-  role: "Independent empirical AI safety research on reward misspecification, agent security and evaluation. Data engineer at Rezinix.",
+  shortRole: "Empirical AI safety · Control & monitoring · RL and post-training",
+  role: "Independent empirical AI safety: model organisms of reward hacking, agent security, and what an evaluation can actually authorise. Data engineer at Rezinix.",
   tagline:
-    "Empirical AI safety research on reward misspecification, agent security and evaluation. Two studies, both published with the findings that did not survive.",
+    "Empirical AI safety research: model organisms of reward hacking, agent security under prompt injection, and evaluations reported with the findings that did not survive.",
 
   // Shown in the hero, one paragraph.
   intro:
-    "My work keeps returning to one question: when does a good score stop being evidence about behaviour? I trained 6,144 policies over 36.9 million episodes to test whether a KL penalty suppresses reward hacking, found that my first answer was an artefact of the policy class I had chosen, and rebuilt the study around a time-aware policy and an exact oracle. Then I asked whether raising an agent's reasoning effort makes it harder to hijack with an injected instruction: across four AgentDojo domains, every completed comparison's interval crossed zero. What I want next is control evaluations, chain-of-thought monitorability and trusted monitoring for agents that hold real permissions. I am reading into mechanistic interpretability to get there.",
+    "The failure I care about is the one where a system passes every check we know how to run and still should not be given more autonomy. Both of my experiments are small model organisms of it. One is a gridworld with a deliberately gameable reward, 6,144 policies over 36.9 million episodes, asking whether a KL penalty suppresses reward hacking or only hides it; my first answer was an artefact of the policy class I had chosen, so I rebuilt the study and published both versions. The other asks whether raising a tool-using agent's reasoning effort makes it harder to hijack with an injected instruction. Across four AgentDojo domains, every completed comparison's interval crossed zero. I want to work on control evaluations, monitorability and trusted monitoring next, and I am learning mechanistic interpretability, because behavioural evidence has already fooled me once.",
 
   // Shown in the About section, one paragraph each. `*text*` renders italic.
   about: [
