@@ -9,6 +9,7 @@ import Figure from "@/components/Figure";
 import CodeCopyButtons from "@/components/CodeCopyButtons";
 import DriveVideo from "@/components/DriveVideo";
 import ArtifactModal from "@/components/ArtifactModal";
+import DemoPageCard from "@/components/DemoPageCard";
 import HarmChainExplorer from "@/components/figures/HarmChainExplorer";
 import CorrelatedFailure from "@/components/figures/CorrelatedFailure";
 import { NOTEBOOK_URL as KL_NOTEBOOK_URL } from "@/data/klExperiment";
@@ -172,22 +173,19 @@ function InteractiveCell({ name }: { name: string }) {
       );
     case "emotisense-demo":
       return (
-        <ArtifactModal
-          src="/projects/emotisense/simulation.html"
+        <DemoPageCard
+          href="/demos/emotisense"
           poster="/projects/emotisense/demo-poster.jpg"
-          title="EmotiSense — live capture and timeline"
-          note="uses your camera and microphone · nothing leaves the page"
-          grantMedia
+          title="EmotiSense capture interface"
+          cta="Open the demo in full"
           caption={
             <>
-              The capture interface: start a recording and it plots a per-second
-              emotion timeline for the face and the voice, plus the pitch and
-              intensity traces the audio model reads. It asks for camera and
-              microphone access because it runs on your own webcam feed;
-              everything stays in the browser tab and nothing is uploaded or
-              stored. The published models are not behind it, so treat the
-              labels as a demonstration of the interface rather than of the
-              accuracies reported below.
+              The capture interface on its own page: start a recording and it
+              plots a per-second emotion timeline for the face and the voice,
+              plus the pitch and intensity traces the audio model reads. The
+              predictions it shows are simulated, not output from the trained
+              models, and it asks for camera and microphone access because it
+              runs on your own feed. Nothing is uploaded or stored.
             </>
           }
         />
