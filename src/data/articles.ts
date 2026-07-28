@@ -112,6 +112,27 @@ export const articles: Article[] = [
     status: "published",
     file: "flan-t5-statguide.md",
   },
+  {
+    slug: "emotisense-100-percent",
+    title: "The model that scored 100% is the one we threw away",
+    dek:
+      "EmotiSense reads emotion from a face and a voice at once and flags sudden changes to a caregiver. Two of the models we tested scored higher than the two we shipped, and both times the higher score was the reason not to trust it. A published project, re-read for what its numbers were actually measuring.",
+    date: "2026-07-29",
+    readingTime: "9 min read",
+    cover: "/projects/emotisense/cover-temp.jpg",
+    coverAlt:
+      "The EmotiSense capture interface showing per-second audio and visual emotion timelines with pitch and intensity traces",
+    tags: [
+      "project case study",
+      "published paper",
+      "evaluation",
+      "overfitting",
+      "multimodal",
+      "CNN / LSTM",
+    ],
+    status: "published",
+    file: "emotisense-100-percent.md",
+  },
 ];
 
 export const publishedArticles = articles.filter((a) => a.status === "published");

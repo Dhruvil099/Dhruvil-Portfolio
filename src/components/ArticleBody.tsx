@@ -146,6 +146,7 @@ function InteractiveCell({ name }: { name: string }) {
         <ArtifactModal
           src="/projects/flan-t5-statguide/demo.html"
           poster="/projects/flan-t5-statguide/demo-poster.jpg"
+          zoom={0.8}
           title="t&Z-testAI — the served interface"
           note="captured app · no backend"
           caption={
@@ -165,6 +166,28 @@ function InteractiveCell({ name }: { name: string }) {
                 viewable as its own page
               </a>
               .
+            </>
+          }
+        />
+      );
+    case "emotisense-demo":
+      return (
+        <ArtifactModal
+          src="/projects/emotisense/simulation.html"
+          poster="/projects/emotisense/demo-poster.jpg"
+          title="EmotiSense — live capture and timeline"
+          note="uses your camera and microphone · nothing leaves the page"
+          grantMedia
+          caption={
+            <>
+              The capture interface: start a recording and it plots a per-second
+              emotion timeline for the face and the voice, plus the pitch and
+              intensity traces the audio model reads. It asks for camera and
+              microphone access because it runs on your own webcam feed;
+              everything stays in the browser tab and nothing is uploaded or
+              stored. The published models are not behind it, so treat the
+              labels as a demonstration of the interface rather than of the
+              accuracies reported below.
             </>
           }
         />

@@ -45,29 +45,18 @@ export default function Home() {
               Get in touch
             </a>
           </div>
-          <ul className="mt-8 space-y-1.5">
-            {profile.currently.map((c) => (
-              <li key={c} className="flex items-start gap-2 text-sm text-ink-3">
-                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-orange" aria-hidden />
-                {c}
-              </li>
-            ))}
-          </ul>
         </div>
         <div className="relative mx-auto w-full max-w-sm">
           <div className="overflow-hidden rounded-2xl border border-line bg-surface">
             <Image
-              src="/art/hero.jpg"
-              alt="Illustration of a small robot held by a measuring-tape leash, juggling coins above a glowing tile while a distant delivery door waits"
-              width={1200}
-              height={1200}
+              src="/profile_pic/dhruvil.jpg"
+              alt={profile.name}
+              width={900}
+              height={900}
               priority
               className="h-auto w-full"
             />
           </div>
-          <p className="mt-2 text-center text-[11px] text-ink-3">
-            The leash, the coins, and the door — from the KL study below.
-          </p>
         </div>
       </section>
 
@@ -92,8 +81,13 @@ export default function Home() {
         <SectionHeading id="about">About</SectionHeading>
         <div className="mt-8 grid gap-10 md:grid-cols-[1.5fr_1fr]">
           <div className="space-y-4 leading-relaxed text-ink-2">
-            {profile.about.map((p) => (
-              <p key={p.slice(0, 32)}>{p}</p>
+            {profile.about.map((para) => (
+              <p key={para.slice(0, 32)}>
+                {/* `*text*` becomes italic, so titles can be set properly */}
+                {para.split(/\*(.+?)\*/g).map((part, i) =>
+                  i % 2 ? <em key={i}>{part}</em> : part,
+                )}
+              </p>
             ))}
           </div>
           <div>
@@ -141,6 +135,8 @@ export default function Home() {
         <SectionHeading id="projects">Selected projects</SectionHeading>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {profile.projects.map((p) => {
+            // widened: `as const` would otherwise narrow away the no-link branch
+            const href: string = p.href;
             const body = (
               <>
                 <h3 className="font-semibold text-ink">{p.name}</h3>
@@ -155,17 +151,17 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                {p.href ? (
+                {href ? (
                   <div className="mt-3 text-xs text-blue group-hover:underline">
                     Read the case study →
                   </div>
                 ) : null}
               </>
             );
-            return p.href ? (
+            return href ? (
               <Link
                 key={p.name}
-                href={p.href}
+                href={href}
                 className="group flex flex-col rounded-xl border border-line bg-surface p-5 transition-colors hover:border-ink-3/60"
               >
                 {body}

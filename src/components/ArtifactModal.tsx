@@ -39,6 +39,7 @@ export default function ArtifactModal({
   note,
   caption,
   grantMedia = false,
+  zoom,
 }: {
   /** Artifact source, run through the viewer. Ignored when `src` is set. */
   files?: Record<string, string>;
@@ -50,6 +51,9 @@ export default function ArtifactModal({
   note?: string;
   caption?: React.ReactNode;
   grantMedia?: boolean;
+  /** Scale the framed page, e.g. 0.8 to zoom out 20%. The frame is enlarged
+   *  by the inverse so the scaled content still fills the modal. */
+  zoom?: number;
 }) {
   const [open, setOpen] = useState(false);
   const host = useRef<HTMLDivElement>(null);
@@ -158,7 +162,17 @@ export default function ArtifactModal({
                       ? "camera; microphone; display-capture; autoplay; clipboard-write"
                       : undefined
                   }
-                  className="h-full w-full border-0"
+                  className="border-0"
+                  style={
+                    zoom
+                      ? {
+                          width: `${100 / zoom}%`,
+                          height: `${100 / zoom}%`,
+                          transform: `scale(${zoom})`,
+                          transformOrigin: "top left",
+                        }
+                      : { width: "100%", height: "100%" }
+                  }
                 />
               ) : (
                 <ArtifactViewer preset={{ kind: "html" }} files={files ?? {}} />

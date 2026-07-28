@@ -15,11 +15,12 @@ export const profile = {
   intro:
     "I work with the pipeline that decides how modern AI models behave — reinforcement learning and post-training — and I am moving my career toward making that pipeline safe. My current focus: reward hacking, specification gaming, and what task-success metrics fail to see.",
 
-  // Shown in the About section, multiple paragraphs.
+  // Shown in the About section, one paragraph each. `*text*` renders italic.
   about: [
-    "I come to AI safety from the capabilities side: data engineering in production, fine-tuning work, and a deep dive into reinforcement learning and post-training. That vantage point is the reason for my concern — the closer you look at how model behaviour is actually produced, the less the standard safeguards look like guarantees.",
-    "My working style is experiment-first. I would rather build the smallest system where a failure mode is visible end to end, measure it properly — frozen evaluations, behavioural metrics, exact oracles where possible — and publish what breaks, including my own earlier conclusions.",
-    "I have applied to BlueDot Impact's Technical AI Safety course and am building a portfolio of small, rigorous safety experiments. Two more are currently running.",
+    "I am building my career around technical AI safety. As models gain longer-horizon autonomy, more test-time compute and access to code, communications and external tools, the central problem is shifting from whether they can complete a task to whether humans can reliably monitor, constrain and interrupt them when objectives diverge or adversaries adapt. My intended specialisation is empirical AI control, post-training safety and evaluations for these systems.",
+    "My public work already targets parts of this problem. I ran a 36.86-million-episode study of KL regularisation under reward misspecification, identified a policy-class confound and rebuilt the experiment around a time-aware policy and exact oracle. I also developed a 9,348-row Inspect/AgentDojo pilot studying whether reasoning effort changes indirect prompt-injection safety. Its completed conditions produced no statistically resolved effect, and I reported the unfinished confirmatory stages without inflating the conclusion. *From Benchmarks to Barriers* connects this evidence to least-privilege access, independent monitoring, human approval and deployment authorisation.",
+    "Also, I am currently a part of Vizuara's six-month RL in Production Bootcamp, strengthening the technical base behind my safety work through RLHF, reward modelling, verifier-based RL, preference optimisation and world models.",
+    "My next research agenda centres on effort-adaptive agent evaluations, chain-of-thought monitorability, trusted monitoring, scalable oversight and safety cases for consequential deployments. I want to pursue this work full-time in an AI-safety research group, owning the full research cycle: threat modelling, experiment design, implementation, statistical analysis and publication.",
   ],
 
   focus: [
@@ -29,11 +30,6 @@ export const profile = {
     "Agentic systems & LLM pipelines",
   ],
 
-  currently: [
-    "Running two follow-up safety experiments (write-ups coming soon)",
-    "BlueDot Impact Technical AI Safety course — applicant",
-    "Vizuara RL production course — all 4 phases",
-  ],
 
   email: "shahdhruvil1310@gmail.com",
   github: "https://github.com/Dhruvil099",
@@ -74,9 +70,9 @@ export const profile = {
     {
       name: "EmotiSense",
       blurb:
-        "Real-time visual + audio emotion tracking (CNN + RNN) with session-level behaviour analysis. Published in Library Progress International.",
-      tech: ["TensorFlow", "Librosa", "Flask"],
-      href: "",
+        "Multimodal emotion tracking from face and voice, published in Library Progress International. Two candidate models scored higher than the two we shipped; the write-up is about why the higher scores were the wrong ones.",
+      tech: ["TensorFlow", "Librosa", "OpenCV", "Chart.js"],
+      href: "/blogs/emotisense-100-percent",
     },
     {
       name: "FLAN-T5 StatGuide",
