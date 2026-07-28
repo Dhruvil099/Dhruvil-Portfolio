@@ -9,7 +9,6 @@ import Figure from "@/components/Figure";
 import CodeCopyButtons from "@/components/CodeCopyButtons";
 import DriveVideo from "@/components/DriveVideo";
 import ArtifactModal from "@/components/ArtifactModal";
-import { statguideArtifactHtml } from "@/data/statguideArtifact";
 import HarmChainExplorer from "@/components/figures/HarmChainExplorer";
 import CorrelatedFailure from "@/components/figures/CorrelatedFailure";
 import { NOTEBOOK_URL as KL_NOTEBOOK_URL } from "@/data/klExperiment";
@@ -145,32 +144,27 @@ function InteractiveCell({ name }: { name: string }) {
     case "statguide-demo":
       return (
         <ArtifactModal
-          files={{ "/index.html": statguideArtifactHtml }}
+          src="/projects/flan-t5-statguide/demo.html"
           poster="/projects/flan-t5-statguide/demo-poster.jpg"
-          title="t&Z-testAI — the deterministic half, live"
-          note="runs in your browser · no backend"
-          grantMedia
+          title="t&Z-testAI — the served interface"
+          note="captured app · no backend"
           caption={
             <>
-              The original app cannot run here: the saved page&apos;s own bundles
-              were never part of the artifact, and the fine-tuned weights are
-              gone (see &ldquo;Where it actually stands&rdquo;). What can be
-              rebuilt exactly is the half this article argues for. Pick an
-              example or type the four numbers yourself — the step the model was
-              responsible for — and everything after it is recomputed live: the
-              corrected S, the critical value from an inverse CDF, the test
-              statistic, the decision and the plot. The critical values match
-              the ones the real backend produced to machine precision. The
-              captured original interface is also{" "}
+              The app as it ran: a pasted word problem, the four numbers the
+              model extracted, the worked solution scipy produced from them,
+              and the plot drawn from its output. The solution types itself out
+              the way it did in the product, so give it a moment. There is no
+              backend behind it, and the fine-tuned weights no longer exist —
+              see &ldquo;Where it actually stands&rdquo;. It is also{" "}
               <a
                 href="/projects/flan-t5-statguide/demo.html"
                 target="_blank"
                 rel="noreferrer"
                 className="text-blue underline"
               >
-                viewable as a standalone page
+                viewable as its own page
               </a>
-              ; it only renders correctly outside a frame.
+              .
             </>
           }
         />

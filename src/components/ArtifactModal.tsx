@@ -33,13 +33,18 @@ const ArtifactViewer = dynamic(
  */
 export default function ArtifactModal({
   files,
+  src,
   poster,
   title,
   note,
   caption,
   grantMedia = false,
 }: {
-  files: Record<string, string>;
+  /** Artifact source, run through the viewer. Ignored when `src` is set. */
+  files?: Record<string, string>;
+  /** Serve an existing page instead. Relative asset paths keep working,
+   *  which srcDoc would break. */
+  src?: string;
   poster?: string;
   title: string;
   note?: string;
@@ -143,7 +148,21 @@ export default function ArtifactModal({
               </button>
             </div>
             <div ref={host} className="min-h-0 flex-1 bg-white [&_iframe]:h-full [&_iframe]:w-full [&>*]:h-full">
-              <ArtifactViewer preset={{ kind: "html" }} files={files} />
+              {src ? (
+                <iframe
+                  src={src}
+                  title={title}
+                  sandbox="allow-scripts allow-modals allow-forms allow-popups"
+                  allow={
+                    grantMedia
+                      ? "camera; microphone; display-capture; autoplay; clipboard-write"
+                      : undefined
+                  }
+                  className="h-full w-full border-0"
+                />
+              ) : (
+                <ArtifactViewer preset={{ kind: "html" }} files={files ?? {}} />
+              )}
             </div>
           </div>
         </div>

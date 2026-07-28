@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { profile } from "@/data/profile";
-import { hasResume, RESUME_PATH } from "@/lib/resume";
+import { findResume } from "@/lib/resume";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -9,11 +9,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * Hidden until `public/resume.pdf` exists. Drop the PDF in and redeploy: this
- * page starts resolving and the header link appears on its own.
+ * Hidden until a resume PDF exists (public/resume.pdf, or any PDF inside
+ * public/resume/). Drop one in and redeploy: this page starts resolving and
+ * the header link appears on its own.
  */
 export default function ResumePage() {
-  if (!hasResume()) notFound();
+  const resume = findResume();
+  if (!resume) notFound();
+  const RESUME_PATH = resume.href;
 
   return (
     <div className="mx-auto max-w-5xl px-5 py-14">
