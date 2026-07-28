@@ -6,14 +6,14 @@
 
 export const profile = {
   name: "Dhruvil Shah",
-  shortRole: "Empirical AI safety · RL & post-training · Evaluations",
-  role: "Data engineer at Rezinix, doing independent empirical AI safety research on reward optimization, agentic risk and evaluation",
+  shortRole: "Empirical AI safety · RL & post-training · Agent evaluations",
+  role: "Independent empirical AI safety research on reward misspecification, agent security and evaluation. Data engineer at Rezinix.",
   tagline:
-    "I build small, auditable experiments about how reward optimization goes wrong — and write them up honestly, corrections included.",
+    "Empirical AI safety research on reward misspecification, agent security and evaluation. Two studies, both published with the findings that did not survive.",
 
   // Shown in the hero, one paragraph.
   intro:
-    "I do the unglamorous half of research: build the experiment, then try to break my own result. A 36.9-million-episode study of KL regularisation under a gameable reward lost its headline finding to a confound I found myself, so I rebuilt it around a time-aware policy and an exact oracle. A 9,348-row AgentDojo pilot asking whether reasoning effort changes prompt-injection robustness resolved no effect, and I published it that way. I want to do this full-time — control evaluations, chain-of-thought monitorability and trusted monitoring for agents that hold real permissions — and I am starting on mechanistic interpretability and scalable oversight to get there.",
+    "My work keeps returning to one question: when does a good score stop being evidence about behaviour? I trained 6,144 policies over 36.9 million episodes to test whether a KL penalty suppresses reward hacking, found that my first answer was an artefact of the policy class I had chosen, and rebuilt the study around a time-aware policy and an exact oracle. Then I asked whether raising an agent's reasoning effort makes it harder to hijack with an injected instruction: across four AgentDojo domains, every completed comparison's interval crossed zero. What I want next is control evaluations, chain-of-thought monitorability and trusted monitoring for agents that hold real permissions. I am reading into mechanistic interpretability to get there.",
 
   // Shown in the About section, one paragraph each. `*text*` renders italic.
   about: [
