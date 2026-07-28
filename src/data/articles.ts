@@ -84,9 +84,9 @@ export const articles: Article[] = [
       "My final-year project: a two-stage system that carries arbitrary files through an ordinary-looking video and back, with filenames and metadata intact. The hard part was not hiding the data. It was realising that placing it into real footage is a clustering and assignment problem.",
     date: "2026-07-28",
     readingTime: "14 min read",
-    cover: "/projects/secure-data-transmission/demo-poster.jpg",
+    cover: "/projects/secure-data-transmission/overview-card.jpg",
     coverAlt:
-      "Screen recording of the pipeline demo showing source files with their metadata, a file browser of test documents, and a terminal running the encoder",
+      "Research overview diagram titled Enhancing Secure Data Transmission using Video-Based Steganography with Pixel-Level Embedding, showing Stage I producing a pixelated video and Stage II clustering those pixels into an everyday carrier video",
     tags: ["project case study", "steganography", "Rust", "OpenCV", "clustering", "Hungarian algorithm"],
     status: "published",
     file: "video-steganography-optimization.md",
