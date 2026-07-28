@@ -79,7 +79,7 @@ export default function Home() {
       {/* ───────────────── about ───────────────── */}
       <section className="border-t border-line/70 py-16">
         <SectionHeading id="about">About</SectionHeading>
-        <div className="mt-8 grid gap-10 md:grid-cols-[1.5fr_1fr]">
+        <div className="mt-8 max-w-3xl">
           <div className="space-y-4 leading-relaxed text-ink-2">
             {profile.about.map((para) => (
               <p key={para.slice(0, 32)}>
@@ -90,91 +90,6 @@ export default function Home() {
               </p>
             ))}
           </div>
-          <div>
-            <h3 className="text-sm font-semibold text-ink">Focus areas</h3>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {profile.focus.map((f) => (
-                <li
-                  key={f}
-                  className="rounded-full border border-line px-3 py-1 text-xs text-ink-2"
-                >
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ───────────────── experience ───────────────── */}
-      <section className="border-t border-line/70 py-16">
-        <SectionHeading id="experience">Experience</SectionHeading>
-        <div className="mt-8 space-y-8">
-          {profile.experience.map((e) => (
-            <div key={e.org} className="grid gap-2 md:grid-cols-[220px_1fr]">
-              <div>
-                <div className="font-semibold text-ink">{e.org}</div>
-                <div className="text-sm text-ink-2">{e.role}</div>
-                <div className="mt-0.5 font-mono text-xs text-ink-3">{e.period}</div>
-              </div>
-              <ul className="space-y-1.5">
-                {e.points.map((p) => (
-                  <li key={p.slice(0, 32)} className="flex items-start gap-2 text-sm text-ink-2">
-                    <span className="mt-1.5 size-1 shrink-0 rounded-full bg-ink-3" aria-hidden />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ───────────────── projects ───────────────── */}
-      <section className="border-t border-line/70 py-16">
-        <SectionHeading id="projects">Selected projects</SectionHeading>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {profile.projects.map((p) => {
-            // widened: `as const` would otherwise narrow away the no-link branch
-            const href: string = p.href;
-            const body = (
-              <>
-                <h3 className="font-semibold text-ink">{p.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-2">{p.blurb}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {p.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-line px-2 py-0.5 font-mono text-[10px] text-ink-3"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                {href ? (
-                  <div className="mt-3 text-xs text-blue group-hover:underline">
-                    Read the case study →
-                  </div>
-                ) : null}
-              </>
-            );
-            return href ? (
-              <Link
-                key={p.name}
-                href={href}
-                className="group flex flex-col rounded-xl border border-line bg-surface p-5 transition-colors hover:border-ink-3/60"
-              >
-                {body}
-              </Link>
-            ) : (
-              <div
-                key={p.name}
-                className="flex flex-col rounded-xl border border-line bg-surface p-5"
-              >
-                {body}
-              </div>
-            );
-          })}
         </div>
       </section>
 
@@ -193,14 +108,6 @@ export default function Home() {
               className="rounded-lg bg-blue px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               {profile.email}
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-lg border border-line px-4 py-2 text-sm text-ink-2 transition-colors hover:border-ink-3 hover:text-ink"
-            >
-              GitHub
             </a>
             {profile.linkedin ? (
               <a

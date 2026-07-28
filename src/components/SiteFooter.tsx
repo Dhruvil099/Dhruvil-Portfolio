@@ -7,18 +7,6 @@ export default function SiteFooter() {
         <span>
           © {new Date().getFullYear()} {profile.name}
         </span>
-        <span>
-          Experiments run in marimo notebooks; figures and logs are from the
-          archived runs.
-        </span>
-        <a
-          href={profile.github}
-          target="_blank"
-          rel="noreferrer"
-          className="ml-auto hover:text-ink-2"
-        >
-          github.com/Dhruvil099
-        </a>
       </div>
     </footer>
   );

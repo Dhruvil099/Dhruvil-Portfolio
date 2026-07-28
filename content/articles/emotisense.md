@@ -6,7 +6,7 @@ Two bake-offs, two times the winner on paper lost. This is what was behind both 
 
 ## What the system does
 
-EmotiSense was my final-year project at DJ Sanghvi, published in *Library Progress International* in late 2024. The idea is narrow. Point a camera and a microphone at someone. Run a face model and a voice model over the stream at the same time. Keep a timeline of what each one thinks the person is feeling, and if that timeline shifts sharply, raise an alert to a caregiver and save the session for later review.
+EmotiSense was my final-year project at DJ Sanghvi, published in [*Library Progress International*](https://bpasjournals.com/library-science/index.php/journal/article/view/3331) in late 2024. The idea is narrow. Point a camera and a microphone at someone. Run a face model and a voice model over the stream at the same time. Keep a timeline of what each one thinks the person is feeling, and if that timeline shifts sharply, raise an alert to a caregiver and save the session for later review.
 
 The intended users were people supporting children with disabilities, where a sudden change in state matters and the child may not be able to describe it. That framing is also the source of the hardest problem in the project, which I come back to at the end.
 
@@ -87,4 +87,4 @@ What I would not keep is choosing between models on an impression. The judgement
 
 ---
 
-Published as: Dhruvil Shah, Isha Shah, Smriti Raman, Sahil Shah, Komal Patil, Aruna Gawade, Nilesh Rathod, Angelin Florence, "EmotiSense: Enhancing Information Accessibility and User Experience through Multimodal Emotion Recognition for Individuals with Disabilities," *Library Progress International* 44(3), 2024, pp. 26333–26352. All accuracies, architectures and dataset counts above are from that paper; the reading of the 100% result, the label-set mismatch and the deployment-population argument are mine, written afterwards.
+Published as: Dhruvil Shah, Isha Shah, Smriti Raman, Sahil Shah, Komal Patil, Aruna Gawade, Nilesh Rathod, Angelin Florence, [EmotiSense: Enhancing Information Accessibility and User Experience through Multimodal Emotion Recognition for Individuals with Disabilities](https://bpasjournals.com/library-science/index.php/journal/article/view/3331), *Library Progress International* 44(3), 2024, pp. 26333–26352. All accuracies, architectures and dataset counts above are from that paper; the reading of the 100% result, the label-set mismatch and the deployment-population argument are mine, written afterwards.

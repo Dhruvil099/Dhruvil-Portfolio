@@ -34,7 +34,7 @@ export const profile = {
   email: "shahdhruvil1310@gmail.com",
   github: "https://github.com/Dhruvil099",
   // ✏️ EDIT ME — add when ready (leave "" to hide the link):
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/dhruvil-shah-70a117241",
   twitter: "",
 
   experience: [
@@ -72,7 +72,7 @@ export const profile = {
       blurb:
         "Multimodal emotion tracking from face and voice, published in Library Progress International. Two candidate models scored higher than the two we shipped; the write-up is about why the higher scores were the wrong ones.",
       tech: ["TensorFlow", "Librosa", "OpenCV", "Chart.js"],
-      href: "/blogs/emotisense-100-percent",
+      href: "/blogs/emotisense",
     },
     {
       name: "FLAN-T5 StatGuide",

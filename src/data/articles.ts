@@ -113,15 +113,15 @@ export const articles: Article[] = [
     file: "flan-t5-statguide.md",
   },
   {
-    slug: "emotisense-100-percent",
+    slug: "emotisense",
     title: "The model that scored 100% is the one we threw away",
     dek:
       "EmotiSense reads emotion from a face and a voice at once and flags sudden changes to a caregiver. Two of the models we tested scored higher than the two we shipped, and both times the higher score was the reason not to trust it. A published project, re-read for what its numbers were actually measuring.",
     date: "2026-07-29",
     readingTime: "9 min read",
-    cover: "/projects/emotisense/cover-temp.jpg",
+    cover: "/projects/emotisense/cover.jpg",
     coverAlt:
-      "The EmotiSense capture interface showing per-second audio and visual emotion timelines with pitch and intensity traces",
+      "A weathered robot with a chipped face holds up a mirror; the reflection shows a flawless idealised version of it, beside a cracked gold seal and an empty chair",
     tags: [
       "project case study",
       "published paper",
@@ -131,7 +131,7 @@ export const articles: Article[] = [
       "CNN / LSTM",
     ],
     status: "published",
-    file: "emotisense-100-percent.md",
+    file: "emotisense.md",
   },
 ];
 

@@ -85,6 +85,13 @@ export default function ArtifactModal({
       if (sandbox && !sandbox.includes("allow-same-origin")) {
         frame.setAttribute("sandbox", `${sandbox} allow-same-origin`);
       }
+      // sandbox and allow are read when the document loads, so re-set srcdoc
+      // to reload the frame under the new attributes.
+      const doc = frame.getAttribute("srcdoc");
+      if (doc !== null) {
+        frame.removeAttribute("srcdoc");
+        frame.setAttribute("srcdoc", doc);
+      }
       return true;
     };
     if (apply()) return;
@@ -156,7 +163,14 @@ export default function ArtifactModal({
                 <iframe
                   src={src}
                   title={title}
-                  sandbox="allow-scripts allow-modals allow-forms allow-popups"
+                  // allow-same-origin is required for getUserMedia: a sandboxed
+                  // frame otherwise has an opaque origin and the call fails with
+                  // SecurityError. Only granted for first-party artifacts.
+                  sandbox={
+                    grantMedia
+                      ? "allow-scripts allow-modals allow-forms allow-popups allow-same-origin"
+                      : "allow-scripts allow-modals allow-forms allow-popups"
+                  }
                   allow={
                     grantMedia
                       ? "camera; microphone; display-capture; autoplay; clipboard-write"
