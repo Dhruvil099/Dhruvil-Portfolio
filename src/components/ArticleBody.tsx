@@ -7,6 +7,7 @@ import TransferMatrix from "@/components/marimo/TransferMatrix";
 import NotebookLink from "@/components/NotebookLink";
 import Figure from "@/components/Figure";
 import DriveVideo from "@/components/DriveVideo";
+import DemoFrame from "@/components/DemoFrame";
 import HarmChainExplorer from "@/components/figures/HarmChainExplorer";
 import CorrelatedFailure from "@/components/figures/CorrelatedFailure";
 import { NOTEBOOK_URL as KL_NOTEBOOK_URL } from "@/data/klExperiment";
@@ -137,6 +138,25 @@ function InteractiveCell({ name }: { name: string }) {
           poster="/projects/secure-data-transmission/demo-poster.jpg"
           title="Five-minute pitch demonstration of the complete pipeline"
           caption="Files and metadata in, ZIP packaging, ISG embedding, the advanced encode pass, playback of the public video, reconstruction and recovery."
+        />
+      );
+    case "statguide-demo":
+      return (
+        <DemoFrame
+          src="/projects/flan-t5-statguide/demo.html"
+          poster="/projects/flan-t5-statguide/demo-poster.jpg"
+          title="t&Z-testAI — the served interface"
+          caption={
+            <>
+              A captured page from the running app: a pasted word problem, the
+              four numbers the model extracted, the worked solution scipy
+              produced from them, and the plot drawn from its output. The
+              snapshot is inert — no backend, no model, no scripts — so nothing
+              here is recomputed; it is the interface exactly as it was. The
+              fine-tuned weights themselves no longer exist; see &ldquo;Where it
+              actually stands&rdquo;.
+            </>
+          }
         />
       );
     default:

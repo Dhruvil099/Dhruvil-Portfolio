@@ -91,6 +91,27 @@ export const articles: Article[] = [
     status: "published",
     file: "video-steganography-optimization.md",
   },
+  {
+    slug: "flan-t5-statguide",
+    title: "The model wrote 811.618 when the question said 81",
+    dek:
+      "A fine-tuned flan-t5-large whose only job is reading: it extracts four numbers from a statistics word problem and scipy does the rest. Two builds, three approaches that failed first, a bug that took a month to find because my metric could not see it, and a second module where I moved the numbers out of the model's output entirely.",
+    date: "2026-07-29",
+    readingTime: "45 min read",
+    cover: "/projects/flan-t5-statguide/cover-temp.jpg",
+    coverAlt:
+      "The t&Z-testAI chat interface: a pasted hypothesis-testing word problem, the worked LaTeX solution with the computed test statistic, and the t-distribution plot with the critical region shaded",
+    tags: [
+      "project case study",
+      "flan-t5",
+      "fine-tuning",
+      "evaluation",
+      "scipy",
+      "failure analysis",
+    ],
+    status: "published",
+    file: "flan-t5-statguide.md",
+  },
 ];
 
 export const publishedArticles = articles.filter((a) => a.status === "published");

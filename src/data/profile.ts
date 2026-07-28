@@ -81,9 +81,9 @@ export const profile = {
     {
       name: "FLAN-T5 StatGuide",
       blurb:
-        "Statistical hypothesis-testing assistant: fine-tuned FLAN-T5 combined with classical test algorithms to work around embedding limitations.",
-      tech: ["PyTorch", "Transformers", "React"],
-      href: "",
+        "A hypothesis-testing assistant where the fine-tuned model only reads: it extracts the numbers from a word problem and scipy computes the test, so the arithmetic cannot be hallucinated. Written up with the failed approaches and the evaluation bug that hid for a month.",
+      tech: ["flan-t5-large", "Transformers", "scipy", "Flask"],
+      href: "/blogs/flan-t5-statguide",
     },
   ],
 } as const;
