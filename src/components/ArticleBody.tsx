@@ -147,7 +147,7 @@ function InteractiveCell({ name }: { name: string }) {
         <ArtifactModal
           src="/projects/flan-t5-statguide/demo.html"
           poster="/projects/flan-t5-statguide/demo-poster.jpg"
-          zoom={0.8}
+          zoom={0.64}
           title="t&Z-testAI — the served interface"
           note="captured app · no backend"
           caption={
